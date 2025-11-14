@@ -1,0 +1,245 @@
+---
+title: Installation Manual
+subtitle: secure your privacy
+layout: default
+modal-id: 3
+---
+
+<style>
+  /* overall layout */
+  body {
+    background: #fff;
+    color: #111;
+    font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial;
+    line-height: 1.65;
+    margin: 0;
+    padding: 0;
+  }
+
+  #content {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 32px 24px;
+  }
+
+  h1, h2, h3, h4 {
+    margin: 1em 0 .4em;
+    letter-spacing: .2px;
+  }
+
+  ol, ul {
+    margin: .5em 0 1em;
+    padding-left: 1.25rem;
+  }
+
+  ul {
+    list-style-type: disc; /* Make sure the bullet point is a filled circle */
+    color: black;         /* Set the bullet point color to black */
+  }
+
+  li { 
+    margin: .4em 0; 
+    color: #111;
+  }
+
+  /* inline code */
+  :not(pre) > code {
+    background: #f3f4f6;
+    border: 1px solid #e5e7eb;
+    padding: 2px 6px;
+    border-radius: 6px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-size: .95em;
+  }
+
+  /* code card styling */
+  .code-card {
+    position: relative;
+    background: #0d1117;
+    border-radius: 10px;
+    margin: 16px 0;
+    box-shadow: 0 6px 16px rgba(0,0,0,.12);
+    overflow: hidden;
+  }
+  .code-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #161b22;
+    border-bottom: 1px solid #30363d;
+    padding: 8px 12px;
+    color: #8b949e;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+  }
+  .copy-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: transparent;
+    color: #8b949e;
+    border: 1px solid #30363d;
+    padding: 4px 8px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 12px;
+    transition: border-color .2s, color .2s, transform .05s;
+  }
+  .copy-btn:hover { color: #fff; border-color: #2f81f7; }
+  .copy-btn:active { transform: translateY(1px); }
+  .copy-icon { width: 14px; height: 14px; stroke: currentColor; fill: none; }
+
+  pre {
+    margin: 0;
+    background: #0d1117;
+    color: #c9d1d9;
+    padding: 14px 16px;
+    overflow-x: auto;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-size: 13px;
+    line-height: 1.55;
+    tab-size: 4;              /* wider indentation for JSON readability */
+    white-space: pre-wrap;    /* keeps indentation & wraps long lines */
+    word-break: break-word;   /* avoids horizontal scroll explosion */
+}
+
+
+  .copied-badge {
+    position: absolute;
+    top: 8px; right: 10px;
+    background: rgba(46,160,67,.15);
+    color: #2ea043;
+    border: 1px solid rgba(46,160,67,.35);
+    padding: 2px 6px;
+    border-radius: 999px;
+    font-size: 12px;
+    opacity: 0;
+    transition: opacity .15s ease-in-out;
+    pointer-events: none;
+  }
+  .copied-badge.show { opacity: 1; }
+</style>
+
+<div class="col-md-12 text-left">
+  <div id="content">
+    <div id="manual">
+      <!-- Example pasted block -->
+      <h3>How to setup?</h3>
+      <ol>
+        <li>Clone the github Repository <em>PDNS_PRIVACY</em> in <strong>VScodium</strong>
+          <ul>
+            <li>pdns_collector</li>
+            <li>pdns_privacy_shield</li>
+            <li>pdns_sensor</li>
+          </ul>
+        </li>
+        <li>Create a virtual environment in every folder and download requirement.txt</li>
+      </ol>
+      <pre><code>python -m venv .venv
+.venv/Scripts/Activate.ps1
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+pip install -r .\requirements.txt</code></pre>
+      <ol start="3">
+        <li>Create .Json files for all 3:</li>
+      </ol>
+      <p><strong>pdns_sensor</strong></p>
+      <pre><code>{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "pdns_collector",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "collector.py",
+      "console": "integratedTerminal",
+      "args": ["Make up your own sensor ID (Sensor-ID)", "Today's Password", "ip:privacy_shield port"]
+    }
+  ]
+}</code></pre>
+
+      <p><strong>pdns_privacy_shield</strong></p>
+      <pre><code>{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "pdns_collector",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "collector.py",
+      "console": "integratedTerminal",
+      "args": ["Today's password", "Guid-found in user.db", "ip", "username", "Password"]
+    }
+  ]
+}</code></pre>
+
+      <p><strong>pdns_collector</strong></p>
+      <pre><code>{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "pdns_collector",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "collector.py",
+      "console": "integratedTerminal"
+    }
+  ]
+}</code></pre>
+      <h4>Today's Password</h4>
+        <li>Copy the password from the collector's dashboard.</li>
+        <li>Collect Today's password and update in Server and Privacy shield .json files</li>
+        <li>The password refreshes every time the collector dashboard is re-run. Remember to copy the changed password when necessary.</li>
+    </div>
+  </div>
+
+</div>
+<script>
+// Automatically wrap code blocks in toolbar + copy button
+document.querySelectorAll('#content pre > code').forEach(codeEl => {
+  const pre = codeEl.parentElement;
+
+  const card = document.createElement('div');
+  card.className = 'code-card';
+
+  const toolbar = document.createElement('div');
+  toolbar.className = 'code-toolbar';
+  const langEl = document.createElement('span');
+  langEl.textContent = 'code';
+  const btn = document.createElement('button');
+  btn.className = 'copy-btn';
+  btn.innerHTML = `
+    <svg class="copy-icon" viewBox="0 0 24 24" stroke-width="1.8" aria-hidden="true">
+      <rect x="9" y="9" width="11" height="11" rx="2"></rect>
+      <path d="M15 9V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h3"></path>
+    </svg>
+    <span>Copy</span>`;
+  const badge = document.createElement('div');
+  badge.className = 'copied-badge';
+  //badge.textContent = 'Copied!';
+
+  toolbar.appendChild(langEl);
+  toolbar.appendChild(btn);
+
+  const parent = pre.parentElement;
+  parent.replaceChild(card, pre);
+  card.appendChild(toolbar);
+  card.appendChild(pre);
+  card.appendChild(badge);
+
+  btn.addEventListener('click', async () => {
+    const text = codeEl.innerText.replace(/\u00A0/g, ' ');
+    try {
+      await navigator.clipboard.writeText(text);
+      badge.classList.add('show');
+      btn.querySelector('span').textContent = 'Copied';
+      setTimeout(() => {
+        badge.classList.remove('show');
+        btn.querySelector('span').textContent = 'Copy';
+      }, 1400);
+    } catch (e) {
+      console.error('Copy failed', e);
+    }
+  });
+});
+</script>

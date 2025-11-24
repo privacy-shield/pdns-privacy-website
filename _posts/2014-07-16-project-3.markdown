@@ -42,6 +42,54 @@ modal-id: 3
     color: #111;
   }
 
+  .setup-panels {
+    margin: 20px 0 32px;
+  }
+
+  .setup-panels details {
+    border: 1px solid rgba(0,0,0,.12);
+    border-radius: 10px;
+    padding: 12px 16px;
+    margin-bottom: 12px;
+    background: #fafafa;
+    box-shadow: 0 6px 18px rgba(0,0,0,.05);
+  }
+
+  .setup-panels summary {
+    font-weight: 600;
+    cursor: pointer;
+    outline: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    justify-content: flex-start;
+    list-style: none;
+    text-align: left;
+  }
+
+  .setup-panels summary::before {
+    content: "▾";
+    font-size: 0.9em;
+    transition: transform .2s ease;
+  }
+
+  .setup-panels details[open] summary::before {
+    content: "▴";
+  }
+
+  .setup-panels summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .setup-panels pre {
+    background: #0d1117;
+    color: #f8fafc;
+    padding: 10px 14px;
+    border-radius: 8px;
+    overflow-x: auto;
+    margin: 8px 0 0;
+  }
+
   /* inline code */
   :not(pre) > code {
     background: #f3f4f6;
@@ -57,13 +105,13 @@ modal-id: 3
     position: relative;
     background: #0d1117;
     border-radius: 10px;
-    margin: 16px 0;
+    margin: 16px 0 4px;
     box-shadow: 0 6px 16px rgba(0,0,0,.12);
     overflow: hidden;
   }
   .code-toolbar {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
     background: #161b22;
     border-bottom: 1px solid #30363d;
@@ -103,6 +151,9 @@ modal-id: 3
     white-space: pre-wrap;    /* keeps indentation & wraps long lines */
     word-break: break-word;   /* avoids horizontal scroll explosion */
 }
+  .code-card + p {
+    margin-top: 0.4em;
+  }
 
 
   .copied-badge {
@@ -127,119 +178,154 @@ modal-id: 3
       <!-- Example pasted block -->
       <h3>How to setup?</h3>
       <ol>
-        <li>Clone the github Repository <em>PDNS_PRIVACY</em> in <strong>VScodium</strong>
+        <li>Clone the github Repository <em>PDNS_PRIVACY</em> from git. You should have the following 3 folders:
           <ul>
             <li>pdns_collector</li>
             <li>pdns_privacy_shield</li>
             <li>pdns_sensor</li>
           </ul>
         </li>
-        <li>Create a virtual environment in every folder and download requirement.txt</li>
-      </ol>
-      <pre><code>python -m venv .venv
+        <li>
+          Create a virtual environment in every folder and download <code>requirements.txt</code>
+          <div class="setup-panels">
+            <details>
+              <summary>Windows (PowerShell)</summary>
+              <pre><code>python -m venv .venv
 .venv/Scripts/Activate.ps1
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 pip install -r .\requirements.txt</code></pre>
-      <ol start="3">
-        <li>Create .Json files for all 3:</li>
+            </details>
+            <details>
+              <summary>macOS (Terminal)</summary>
+              <pre><code>python3 -m venv .venv
+source .venv/bin/activate
+pip3 install -r requirements.txt</code></pre>
+            </details>
+            <details>
+              <summary>Linux (Ubuntu)</summary>
+              <pre><code>python3 -m venv .venv
+source .venv/bin/activate
+pip3 install -r requirements.txt</code></pre>
+            </details>
+          </div>
+        </li>
+        <li>
+          Provide the appropriate argument value for each of the components
+          <div class="setup-panels">
+            <details>
+              <summary>Privacy Shield</summary>
+              <ul>
+                <li><strong>Today's Password - </strong><em>Obtain the password from the Passive DNS Dashboard</em></li>
+                <li><strong>GUID - </strong><em>obtined From <code>user.db</code></em></li>
+                <li><strong>Ip address - </strong><em>Host's ip adsress</em></li>
+                <li><strong>Username - </strong><em>obtained from <code>database.py</code> under pdns_privacy_shield</em></li>
+                <li><strong>Password - </strong><em>obtained from <code>database.py</code> under pdns_privacy_shield</em></li>
+              </ul>
+            </details>
+            <details>
+              <summary>Sensor</summary>
+              <ul>
+                <li><strong>Sensor ID - </strong><em>Create your own ID</em></li>
+                <li><strong>Today's Password - </strong><em>Must match the password enetered pdns_privacy_shield</em></li>
+                <li><strong>Ip Address:port number - </strong><em>Provide the IP address and port number of the Sensor Dashboard instance.</em></li>
+              </ul>
+            </details>
+          </div>
+        </li>
       </ol>
-      <p><strong>pdns_sensor</strong></p>
-      <pre><code>{
-  "version": "0.2.0",
-  "configurations": [
-    {
-      "name": "pdns_collector",
-      "type": "debugpy",
-      "request": "launch",
-      "program": "collector.py",
-      "console": "integratedTerminal",
-      "args": ["Make up your own sensor ID (Sensor-ID)", "Today's Password", "ip:privacy_shield port"]
-    }
-  ]
-}</code></pre>
+      <h3>Persistent Service Configuration</h3>
+      <p>Reliable, long-running processes are essential for system stability. To achieve this, we can configure the application as a persistent service using systemd, allowing it to run automatically and recover from failures.</p>
+      <ol>
+        <li>Create a new service file. Example:</li>
+        <pre><code>sudo nano /etc/systemd/system/<em>service-name</em>.service</code></pre>
+        <li>Define how the service runs. Update the service file with:</li>
+        <pre><code>[Unit]
+Description=PDNS Sensor
+After=network-online.target
+Wants=network-online.target
 
-      <p><strong>pdns_privacy_shield</strong></p>
-      <pre><code>{
-  "version": "0.2.0",
-  "configurations": [
-    {
-      "name": "pdns_collector",
-      "type": "debugpy",
-      "request": "launch",
-      "program": "collector.py",
-      "console": "integratedTerminal",
-      "args": ["Today's password", "Guid-found in user.db", "ip", "username", "Password"]
-    }
-  ]
-}</code></pre>
+[Service]
+Type=simple
+WorkingDirectory=/opt/pdns_sensor
+ExecStart=/opt/pdns_sensor/.venv/Scripts/python.exe https_sensor.py <em>sensor_id</em> <em>today_password</em> <em>ip_address:port_number</em>
+Restart=always
+RestartSec=5
+User=root
+Environment=PYTHONUNBUFFERED=1
 
-      <p><strong>pdns_collector</strong></p>
-      <pre><code>{
-  "version": "0.2.0",
-  "configurations": [
-    {
-      "name": "pdns_collector",
-      "type": "debugpy",
-      "request": "launch",
-      "program": "collector.py",
-      "console": "integratedTerminal"
-    }
-  ]
-}</code></pre>
-      <h4>Today's Password</h4>
-        <li>Copy the password from the collector's dashboard.</li>
-        <li>Collect Today's password and update in Server and Privacy shield .json files</li>
-        <li>The password refreshes every time the collector dashboard is re-run. Remember to copy the changed password when necessary.</li>
+[Install]
+WantedBy=multi-user.target
+</code></pre>
+        <li>Reload systemd to read the new service:</li>
+        <pre><code>sudo systemctl daemon-reload</code></pre>
+        <li>Start the service:</li>
+        <pre><code>sudo systemctl start privacyshield</code></pre>
+        <li>Enable the service on boot:</li>
+        <pre><code>sudo systemctl enable privacyshield</code></pre>
+        <li>Check the service status:</li>
+        <pre><code>systemctl status privacyshield</code></pre>
+      </ol>
     </div>
   </div>
-
 </div>
 <script>
-// Automatically wrap code blocks in toolbar + copy button
-document.querySelectorAll('#content pre > code').forEach(codeEl => {
-  const pre = codeEl.parentElement;
+(function () {
+  const container = document.getElementById('content');
+  if (!container || container.dataset.copyEnhancer === 'done') {
+    return;
+  }
+  container.dataset.copyEnhancer = 'done';
 
-  const card = document.createElement('div');
-  card.className = 'code-card';
+  // Clean up any previously wrapped blocks (prevents double wrappers)
+  container.querySelectorAll('.code-card').forEach(card => {
+    const pre = card.querySelector('pre');
+    if (pre && card.parentElement) {
+      card.replaceWith(pre);
+    }
+  });
 
-  const toolbar = document.createElement('div');
-  toolbar.className = 'code-toolbar';
-  const langEl = document.createElement('span');
-  langEl.textContent = 'code';
-  const btn = document.createElement('button');
-  btn.className = 'copy-btn';
-  btn.innerHTML = `
+  // Automatically wrap code blocks in toolbar + copy button
+  container.querySelectorAll('pre > code').forEach(codeEl => {
+    if (codeEl.closest('.code-card')) {
+      return; // already wrapped
+    }
+
+    const pre = codeEl.parentElement;
+    const card = document.createElement('div');
+    card.className = 'code-card';
+    const toolbar = document.createElement('div');
+    toolbar.className = 'code-toolbar';
+    const btn = document.createElement('button');
+    btn.className = 'copy-btn';
+    btn.innerHTML = `
     <svg class="copy-icon" viewBox="0 0 24 24" stroke-width="1.8" aria-hidden="true">
       <rect x="9" y="9" width="11" height="11" rx="2"></rect>
       <path d="M15 9V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h3"></path>
     </svg>
     <span>Copy</span>`;
-  const badge = document.createElement('div');
-  badge.className = 'copied-badge';
-  //badge.textContent = 'Copied!';
-
-  toolbar.appendChild(langEl);
-  toolbar.appendChild(btn);
-
-  const parent = pre.parentElement;
-  parent.replaceChild(card, pre);
-  card.appendChild(toolbar);
-  card.appendChild(pre);
-  card.appendChild(badge);
-
-  btn.addEventListener('click', async () => {
-    const text = codeEl.innerText.replace(/\u00A0/g, ' ');
-    try {
-      await navigator.clipboard.writeText(text);
-      badge.classList.add('show');
-      btn.querySelector('span').textContent = 'Copied';
-      setTimeout(() => {
-        badge.classList.remove('show');
-        btn.querySelector('span').textContent = 'Copy';
-      }, 1400);
-    } catch (e) {
-      console.error('Copy failed', e);
-    }
+    const badge = document.createElement('div');
+    badge.className = 'copied-badge';
+    //badge.textContent = 'Copied!';
+    toolbar.appendChild(btn);
+    const parent = pre.parentElement;
+    parent.replaceChild(card, pre);
+    card.appendChild(toolbar);
+    card.appendChild(pre);
+    card.appendChild(badge);
+    btn.addEventListener('click', async () => {
+      const text = codeEl.innerText.replace(/\u00A0/g, ' ');
+      try {
+        await navigator.clipboard.writeText(text);
+        badge.classList.add('show');
+        btn.querySelector('span').textContent = 'Copied';
+        setTimeout(() => {
+          badge.classList.remove('show');
+          btn.querySelector('span').textContent = 'Copy';
+        }, 1400);
+      } catch (e) {
+        console.error('Copy failed', e);
+      }
+    });
   });
-});
+})();
 </script>

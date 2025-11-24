@@ -1,4 +1,4 @@
-/*!
+﻿/*!
  * Start Bootstrap - Agency Bootstrap Theme (http://startbootstrap.com)
  * Code licensed under the Apache License v2.0.
  * For details, see http://www.apache.org/licenses/LICENSE-2.0.
@@ -365,10 +365,11 @@ section h3.section-subheading {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    gap: 10px;
     width: 100%;
     max-width: 320px;
     margin: 0 auto 30px;
-    padding: 32px 26px;
+    padding: 22px 18px;
     text-align: center;
     text-transform: none;
     text-decoration: none;
@@ -377,20 +378,25 @@ section h3.section-subheading {
     border-radius: 14px;
     box-shadow: 0 10px 25px rgba(0,0,0,.06);
     transition: transform .2s ease, box-shadow .2s ease;
-    min-height: 230px;
+    min-height: 210px;
     color: inherit;
 }
 
 #portfolio .portfolio-item .portfolio-card h4 {
-    margin: 0 0 14px;
+    margin: 0 0 10px;
     font-weight: 700;
+    font-size: 1.15rem;
+    line-height: 1.4;
     letter-spacing: .3px;
     text-decoration: none;
+    word-break: normal;
+    hyphens: auto;
 }
 
 #portfolio .portfolio-item .portfolio-card .insight-subtitle {
     margin: 0;
-    font-size: 0.95em;
+    font-size: 0.88em;
+    line-height: 1.35;
     color: #777;
     text-decoration: none;
 }
@@ -850,3 +856,24 @@ img::-moz-selection {
 body {
     webkit-tap-highlight-color: #{{ site.data.template.color.primary }};
 }
+
+/* Global styling for router accordion summaries */
+.setup-panels summary {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    justify-content: flex-start;
+    list-style: none;
+    text-align: left;
+}
+
+.setup-panels summary::before {
+    content: "▾";
+    font-size: 0.9em;
+    transition: transform .2s ease, color .2s ease;
+}
+
+.setup-panels details[open] summary::before {
+    content: "▴";
+}
+

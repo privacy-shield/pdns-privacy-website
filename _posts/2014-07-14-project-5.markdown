@@ -1,0 +1,548 @@
+﻿---
+title: Development setup
+subtitle: Test it out!
+layout: default
+modal-id: 5
+---
+<style>
+  /* Collapsible widget shell */
+  details.fancy-collapse {
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    margin: 0 0 28px;
+    background: transparent;
+    box-shadow: none;
+    display: block;
+    width: 100%;
+  }
+
+  details.fancy-collapse summary {
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 20px;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0;
+    width: 100%;
+    text-align: left;
+  }
+
+  details.fancy-collapse summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .arrow-right {
+    font-size: 20px;
+    transition: transform .25s ease;
+    display: inline-flex;
+    width: 1em;
+    justify-content: center;
+  }
+
+  details[open] .arrow-right {
+    transform: rotate(180deg);
+  }
+
+  details.fancy-collapse .inner {
+    padding: 0;
+    margin-top: 12px;
+    border: none;
+  }
+
+  /* Shared content wrapper */
+  .dev-guide {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 32px 24px;
+    text-align: left;
+  }
+
+  .dev-guide h1,
+  .dev-guide h2,
+  .dev-guide h3,
+  .dev-guide h4 {
+    margin: 1em 0 .4em;
+    letter-spacing: .2px;
+  }
+
+  .dev-guide ol,
+  .dev-guide ul {
+    margin: .5em 0 1em;
+    padding-left: 1.25rem;
+  }
+
+  .dev-guide ul {
+    list-style-type: disc;
+    color: #111;
+  }
+
+  .dev-guide li {
+    margin: .4em 0;
+    color: #111;
+  }
+
+  .dev-guide :not(pre) > code {
+    background: #f3f4f6;
+    border: 1px solid #e5e7eb;
+    padding: 2px 6px;
+    border-radius: 6px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-size: .95em;
+  }
+
+  .dev-guide pre {
+    margin: 0 0 16px;
+    background: #0d1117;
+    color: #c9d1d9;
+    padding: 14px 16px;
+    overflow-x: auto;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-size: 13px;
+    line-height: 1.55;
+    tab-size: 4;
+    white-space: pre-wrap;
+    word-break: break-word;
+    border-radius: 10px;
+    box-shadow: 0 6px 16px rgba(0,0,0,.12);
+  }
+
+  .video-frame {
+    margin: 0 0 24px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 12px 30px rgba(0,0,0,.12);
+    background: #000;
+  }
+
+  .video-frame video {
+    width: 100%;
+    height: auto;
+    display: block;
+    aspect-ratio: 16 / 9;
+  }
+
+  /* Router accordion styles */
+  .setup-panels {
+    margin: 20px 0 32px;
+  }
+
+  .setup-panels details {
+    border: 1px solid rgba(0,0,0,.12);
+    border-radius: 10px;
+    padding: 12px 16px;
+    margin-bottom: 12px;
+    background: #fafafa;
+    box-shadow: 0 6px 18px rgba(0,0,0,.05);
+  }
+
+  .setup-panels summary {
+    font-weight: 600;
+    cursor: pointer;
+    outline: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    justify-content: flex-start;
+    list-style: none;
+    text-align: left;
+  }
+
+  .setup-panels summary::before {
+    content: "▾";
+    font-size: 0.9em;
+    transition: transform .2s ease, color .2s ease;
+  }
+
+  .setup-panels details[open] summary::before {
+    content: "▴";
+  }
+
+  .setup-panels details[open] summary {
+    color: #0077cc;
+  }
+
+  .setup-panels summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .setup-panels p {
+    margin: 2px 0;
+    color: #444;
+    font-size: .93em;
+    line-height: 1.3;
+  }
+
+  .setup-panels p + pre {
+    margin-top: 0;
+  }
+
+  .setup-panels pre {
+    background: #0d1117;
+    color: #f8fafc;
+    padding: 6px 14px;
+    border-radius: 8px;
+    overflow-x: auto;
+    margin: 2px 0;
+  }
+
+  li > .setup-panels {
+    margin-top: 8px;
+  }
+
+  h3.section-heading,
+  h4.section-heading {
+    margin-top: 30px;
+    margin-bottom: 10px;
+  }
+
+  h3.section-heading {
+    margin-top: 40px;
+  }
+
+  h4.section-heading {
+    margin-top: 30px;
+  }
+  /* code card styling */
+  .code-card {
+    position: relative;
+    background: #0d1117;
+    border-radius: 10px;
+    margin: 16px 0 4px;
+    box-shadow: 0 6px 16px rgba(0,0,0,.12);
+    overflow: hidden;
+  }
+  .code-toolbar {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    background: #161b22;
+    border-bottom: 1px solid #30363d;
+    padding: 8px 12px;
+    color: #8b949e;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+  }
+
+  .code-card + p {
+    margin-top: 0.4em;
+  }
+  .copy-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: transparent;
+    color: #8b949e;
+    border: 1px solid #30363d;
+    padding: 4px 8px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 12px;
+    transition: border-color .2s, color .2s, transform .05s;
+  }
+  .copy-btn:hover { color: #fff; border-color: #2f81f7; }
+  .copy-btn:active { transform: translateY(1px); }
+  .copy-icon { width: 14px; height: 14px; stroke: currentColor; fill: none; }
+  pre {
+    margin: 0;
+    background: #0d1117;
+    color: #c9d1d9;
+    padding: 14px 16px;
+    overflow-x: auto;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-size: 13px;
+    line-height: 1.55;
+    tab-size: 4;              /* wider indentation for JSON readability */
+    white-space: pre-wrap;    /* keeps indentation & wraps long lines */
+    word-break: break-word;   /* avoids horizontal scroll explosion */
+}
+
+
+  .copied-badge {
+    position: absolute;
+    top: 8px; right: 10px;
+    background: rgba(46,160,67,.15);
+    color: #2ea043;
+    border: 1px solid rgba(46,160,67,.35);
+    padding: 2px 6px;
+    border-radius: 999px;
+    font-size: 12px;
+    opacity: 0;
+    transition: opacity .15s ease-in-out;
+    pointer-events: none;
+  }
+  .copied-badge.show { opacity: 1; }
+</style>
+
+
+<!-- WRAPPED BLOCK -->
+<details class="fancy-collapse">
+  <summary>
+    PC SETUP
+    <span class="arrow-right">⌄</span>
+  </summary>
+
+  <div class="inner">
+    <section class="dev-guide">
+      <!-- Example pasted block -->
+      <div class="video-frame">
+        <video controls preload="metadata">
+          <source src="{{ '/img/demo1-h264.mp4' | relative_url }}" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <ol>
+        <li>Clone the github Repository from git. You should see three folders.
+          <ul>
+            <li>pdns_collector</li>
+            <li>pdns_privacy_shield</li>
+            <li>pdns_sensor</li>
+          </ul>
+        </li>
+        <li>Create a virtual environment in every folder and download requirement.txt
+          <ul>
+            <li> link to the requirement downloading</li>
+          </ul>
+        </li>
+      </ol>
+      <ol start="3">
+        <li>Create .Json files for all 3:</li>
+      </ol>
+      <p><strong>pdns_sensor</strong></p>
+      <pre><code>{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "pdns_sensor",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "https_sensor.py",
+      "console": "integratedTerminal",
+      "args": ["Make up your own sensor ID (Sensor-ID)", "Today's Password", "ip:privacy_shield port"]
+    }
+  ]
+}</code></pre>
+      <p><strong>pdns_privacy_shield</strong></p>
+      <pre><code>{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "pdns_privacy_shield",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "privacyshield.py",
+      "console": "integratedTerminal",
+      "args": ["Today's password", "Guid-found in user.db", "ip", "username", "Password"]
+    }
+  ]
+}</code></pre>
+      <p><strong>pdns_collector</strong></p>
+      <pre><code>{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "pdns_collector",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "collector.py",
+      "console": "integratedTerminal"
+    }
+  ]
+}</code></pre>
+    </section>
+  </div>
+</details>
+
+<br>
+<!-- WRAPPED BLOCK -->
+<details class="fancy-collapse">
+  <summary>
+    ROUTER SETUP
+    <span class="arrow-right">⌄</span>
+  </summary>
+
+  <div class="inner">
+    <section class="dev-guide">
+    <h3 class="section-heading">OpenWrt</h3>
+    <p class="lead" style="font-size:1.5em; line-height:1.4;">
+      As part of this project, the team used an OpenWrt router running on an AArch64 architecture to run a working pDNS data sensor and simulate pDNS data collection in an organization. The router was also chosen to provide optimal performance with minimal resource usage.
+      <br><br>
+      <img src="img/router.jpg" alt="OpenWrt router" style="display:block; width:80%; max-width:620px; height:auto; border-radius:12px; margin:0 auto 20px;">
+      <br><br>
+      This project involves using cross-compilation. This allows building the program on a separate, more capable system while targeting the specific AArch64 architecture of the OpenWrt router. This process ensures that the compiled binaries, along with their necessary dependencies, are fully compatible with the router's environment. 
+    </p>
+    <ul>
+      <h3 class="section-heading">How to set up?</h3>
+      <li>
+        <strong>Install Dependencies</strong>
+        <div class="setup-panels">
+          <details>
+            <summary>Ubuntu / Debian / WSL</summary>
+            <pre><code>sudo apt update
+sudo apt install -y \
+  build-essential g++ git rsync bash diffutils wget \
+  unzip xz-utils zstd pkg-config gawk sed bison flex \
+  perl file python3
+</code></pre>
+          </details>
+          <details>
+            <summary>macOS (Homebrew)</summary>
+            <pre><code>brew update
+brew install make gcc git wget unzip xz gawk rsync \
+  bash perl zstd
+</code></pre>
+          </details>
+          <details>
+            <summary>Fedora</summary>
+            <pre><code>sudo dnf install -y \
+  make gcc-c++ git rsync bash diffutils wget unzip \
+  xz xz-devel zstd pkg-config gawk sed bison flex \
+  perl file python3
+</code></pre>
+          </details>
+          <details>
+            <summary>CentOS / RHEL</summary>
+            <pre><code>sudo yum install -y \
+  make gcc-c++ git rsync bash diffutils wget unzip \
+  xz xz-devel zstd pkg-config gawk sed bison flex \
+  perl file python3
+</code></pre>
+          </details>
+        </div>
+      </li>
+      <li>
+        <strong>Download the Qualcomm IPQ60xx SDK</strong>
+        <p>Browse <a href="https://downloads.openwrt.org/releases/" target="_blank">downloads.openwrt.org</a> and navigate to <code>targets/qualcommax/ipq60xx/</code> to grab the SDK tarball.</p>
+        <br>Then extract the SDK <br>
+        <pre><code>
+cd ~
+tar --use-compress-program=unzstd -xf openwrt-sdk-*.tar.zst
+cd openwrt-sdk-qualcommax-ipq60xx_*
+
+</code></pre>
+      </li>
+      <br>
+      <li>
+        <strong>Prepare feeds</strong>
+        <br><br>Inside SDK folder
+        <pre><code>echo "src-git packages https://git.openwrt.org/feed/packages.git
+src-git luci https://git.openwrt.org/project/luci.git
+src-git routing https://git.openwrt.org/feed/routing.git
+src-git telephony https://git.openwrt.org/feed/telephony.git" > feeds.conf
+</code></pre>
+ <br>Update:<br>
+<pre><code>
+./scripts/feeds update -a
+./scripts/feeds install -a
+</code></pre>
+      </li>
+      <br>
+      <li>
+        <strong>Build required libraries</strong>
+        <pre><code>make package/libpcap/compile V=s
+make package/openssl/compile V=s
+make package/curl/compile V=s
+</code></pre>
+        <p>Outputs appear inside <code>staging_dir/target-aarch64_cortex-a53_musl/usr/include</code> and <code>taging_dir/target-aarch64_cortex-a53_musl/usr/lib</code>.</p>
+      </li>
+      <li>
+        <strong>Compile <code>https_sensor.c</code></strong>
+        <br><br>Use the SDK’s built-in cross-compiler:
+        <pre><code>export STAGING=staging_dir/target-aarch64_cortex-a53_musl
+export TOOLCHAIN=staging_dir/toolchain-aarch64_cortex-a53_gcc-14.3.0_musl
+export TARGET_CC=/bin/aarch64-openwrt-linux-musl-gcc
+</code></pre>
+<br>Now compile your sensor using Static binary<br>
+<pre><code>
+$TARGET_CC -static -O2 -Wall \
+  -I$STAGING/usr/include \
+  -L$STAGING/usr/lib \
+  /<em>location_of_file</em>\
+  -lpcap -lcurl -lssl -lcrypto\
+  -o sensor
+</code></pre>
+      </li>
+      <br>
+      <li>
+        <strong>Copy binary to router</strong>
+        <pre><code>scp sensor root@<em>router_ip_address</em>:/tmp/sensor
+</code></pre>
+      </li>
+      <br>
+      <li>
+        <strong>Run on router</strong>
+        <pre><code>ssh root@192.168.0.1
+chmod +x /tmp/sensor
+/tmp/sensor
+</code></pre>
+      </li>
+    </ul>
+    </section>
+  </div>
+  <script>
+(function () {
+  document.querySelectorAll('.dev-guide').forEach(container => {
+    if (container.dataset.copyEnhancer === 'done') {
+      return;
+    }
+    container.dataset.copyEnhancer = 'done';
+
+    // Clean up any previously wrapped blocks (prevents double wrappers)
+    container.querySelectorAll('.code-card').forEach(card => {
+      const pre = card.querySelector('pre');
+      if (pre && card.parentElement) {
+        card.replaceWith(pre);
+      }
+    });
+
+    // Automatically wrap code blocks in toolbar + copy button
+    container.querySelectorAll('pre > code').forEach(codeEl => {
+      if (codeEl.closest('.code-card')) {
+        return; // already wrapped
+      }
+
+      const pre = codeEl.parentElement;
+      const card = document.createElement('div');
+      card.className = 'code-card';
+      const toolbar = document.createElement('div');
+      toolbar.className = 'code-toolbar';
+      const btn = document.createElement('button');
+      btn.className = 'copy-btn';
+      btn.innerHTML = `
+    <svg class="copy-icon" viewBox="0 0 24 24" stroke-width="1.8" aria-hidden="true">
+      <rect x="9" y="9" width="11" height="11" rx="2"></rect>
+      <path d="M15 9V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h3"></path>
+    </svg>
+    <span>Copy</span>`;
+      const badge = document.createElement('div');
+      badge.className = 'copied-badge';
+      //badge.textContent = 'Copied!';
+      toolbar.appendChild(btn);
+      const parent = pre.parentElement;
+      parent.replaceChild(card, pre);
+      card.appendChild(toolbar);
+      card.appendChild(pre);
+      card.appendChild(badge);
+      btn.addEventListener('click', async () => {
+        const text = codeEl.innerText.replace(/\u00A0/g, ' ');
+        try {
+          await navigator.clipboard.writeText(text);
+          badge.classList.add('show');
+          btn.querySelector('span').textContent = 'Copied';
+          setTimeout(() => {
+            badge.classList.remove('show');
+            btn.querySelector('span').textContent = 'Copy';
+          }, 1400);
+        } catch (e) {
+          console.error('Copy failed', e);
+        }
+      });
+    });
+  });
+})();
+  </script>
+</details>

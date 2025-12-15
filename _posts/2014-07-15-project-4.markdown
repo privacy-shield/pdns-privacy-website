@@ -3,6 +3,7 @@ title: Future Work
 subtitle: new ideas
 layout: default
 modal-id: 4
+order: 3
 ---
 
   <div class="row">
@@ -45,9 +46,17 @@ the pDNS data provider is not exposed at any point.
       <p class="lead">
        The Privacy shield can be further enhanced by encorporating TOR to maintain anonymity of organizations. BY routing DNS queries through th TOR network, we can ensure that the user's real IP address is hidden and that their online activity remains anonymous. This prevents third parties from tracing the origin of the query. Furthermore, by employing DNS-over-Tor (DoT) or DNS-over-HTTPS (DoH) protocols, you can encrypt DNS traffic and prevent eavesdropping while it traverses the Tor network. This end-to-end encryption and routing through Tor's anonymous network significantly mitigate the risk of identity exposure and traffic analysis, thus enhancing the overall privacy and anonymity of your users
       </p>
-      <h3 class="section-heading">Expand sesnor usability</h3>
+      <h3 class="section-heading">Expanding the network</h3>
+      <h4 class="section-heading"> Sensor Usability</h4>
       <p class="lead">
       We are now aiming to expand usability by including alternative sensors like IOS and android.This expansion aims to make the Privacy Shield more accessible to a broader range of users and organizations, ensuring that privacy protection is seamless across various platforms. Additionally, we plan to integrate mobile-specific features, including privacy alerts and device-specific optimizations, to further enhance both anonymity and the overall user experience. This will allow us to provide a more robust, versatile, and user-friendly privacy solution, catering to the evolving needs of users across diverse devices.
       </p>
+      <h4 class="section-heading">Co-working sensors and shields</h4>
+      <p class="lead">We are also aiming on xpanding the Privacy Shield into a distributed and collaborative network consisting of multiple sensors and multiple Privacy Shield instances operating together. Instead of a single centralized deployment, sensors may be deployed across different organizations, networks, and geographical locations, each forwarding anonymized pDNS data to one or more Privacy Shields</p>
+      <div style="text-align: center; margin: 20px 0;">
+  <img src="{{ '/img/network.png' | relative_url }}"
+       style="max-width: 75%; height: auto;">
+</div>
+      <p class="lead">In this expanded architecture, multiple Privacy Shields can operate in parallel and exchange selected anonymized threat intelligence, enabling broader visibility into emerging DNS-based threats while avoiding a single point of failure. This federated approach improves scalability, resilience, and fault tolerance, allowing the system to grow as participation increases.</p>
     </div>
   </div>

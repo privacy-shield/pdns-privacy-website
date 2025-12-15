@@ -3,6 +3,7 @@ title: Development setup
 subtitle: Test it out!
 layout: default
 modal-id: 5
+order: 5
 ---
 <style>
   /* Collapsible widget shell */
@@ -282,7 +283,7 @@ modal-id: 5
 <!-- WRAPPED BLOCK -->
 <details class="fancy-collapse">
   <summary>
-    PC SETUP
+    WORKSPACE SETUP
     <span class="arrow-right">⌄</span>
   </summary>
 
@@ -296,21 +297,15 @@ modal-id: 5
         </video>
       </div>
       <ol>
-        <li>Clone the github Repository from git. You should see three folders.
-          <ul>
-            <li>pdns_collector</li>
-            <li>pdns_privacy_shield</li>
-            <li>pdns_sensor</li>
-          </ul>
-        </li>
-        <li>Create a virtual environment in every folder and download requirement.txt
-          <ul>
-            <li> link to the requirement downloading</li>
-          </ul>
-        </li>
+        <<li>Follow steps 1 and 2 from the
+  <a href="{{ '/2014/07/16/project-3/' | relative_url }}">Installation Manual</a> before moving on to step 2
+</li>
       </ol>
-      <ol start="3">
-        <li>Create .Json files for all 3:</li>
+      <ol start="2">
+        <li>Create <code>launch.json</code> files for all 3 folders:</li>
+        <small>Dont know where to get the arguments from?</small>
+        <small>Follow step 3 from the
+  <a href="{{ '/2014/07/16/project-3/' | relative_url }}">Installation Manual</a></small>
       </ol>
       <p><strong>pdns_sensor</strong></p>
       <pre><code>{
@@ -371,17 +366,18 @@ modal-id: 5
     <p class="lead" style="font-size:1.5em; line-height:1.4;">
       As part of this project, the team used an OpenWrt router running on an AArch64 architecture to run a working pDNS data sensor and simulate pDNS data collection in an organization. The router was also chosen to provide optimal performance with minimal resource usage.
       <br><br>
-      <img src="img/router.jpg" alt="OpenWrt router" style="display:block; width:80%; max-width:620px; height:auto; border-radius:12px; margin:0 auto 20px;">
+      <img src="{{ '/img/router.jpg' | relative_url }}" alt="OpenWrt router" style="display:block; width:80%; max-width:620px; height:auto; border-radius:12px; margin:0 auto 20px;">
       <br><br>
       This project involves using cross-compilation. This allows building the program on a separate, more capable system while targeting the specific AArch64 architecture of the OpenWrt router. This process ensures that the compiled binaries, along with their necessary dependencies, are fully compatible with the router's environment. 
     </p>
     <ul>
-      <h3 class="section-heading">How to set up?</h3>
+      <h3 class="section-heading">Cross-Compilation Setup</h3>
+      <ol>
       <li>
         <strong>Install Dependencies</strong>
         <div class="setup-panels">
           <details>
-            <summary>Ubuntu / Debian / WSL</summary>
+            <summary>Ubuntu / Debian  (WSL Dependent)</summary>
             <pre><code>sudo apt update
 sudo apt install -y \
   build-essential g++ git rsync bash diffutils wget \
@@ -480,6 +476,7 @@ chmod +x /tmp/sensor
 /tmp/sensor
 </code></pre>
       </li>
+      </ol>
     </ul>
     </section>
   </div>

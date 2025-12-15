@@ -1,7 +1,133 @@
 ---
 title: Sensors 
 subtitle: Project testing!
-layout: default
+layout: sidebar
+permalink: /sensors/
 modal-id: 6
+order: 4
 --- 
+<style>
+.nice-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-top: 25px;
+    font-size: 18px; /* Bigger text */
+    font-family: Arial, sans-serif;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    border-radius: 12px;
+    overflow: hidden;
+}
 
+.nice-table caption {
+    caption-side: top;
+    padding: 18px;
+    font-size: 22px;
+    font-weight: bold;
+    background: #f7f7f7;
+}
+
+.nice-table th {
+    background: #f1f1f1;
+    padding: 16px 20px;
+    border-bottom: 2px solid #ddd;
+    text-align: left;
+    font-size: 18px;
+}
+
+.nice-table td {
+    padding: 16px 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.nice-table tr:hover td {
+    background: #fafafa;
+}
+/* Override Agency modal width */
+.portfolio-modal .modal-content .container {
+    max-width: none !important;
+    width: 100% !important;
+    padding-left: 60px;
+    padding-right: 60px;
+}
+
+</style>
+
+<div class="row">
+    <div class="col-md-12 text-left">
+      <p class="lead">Sensors form the data collection layer of the pDNS Privacy Shield architecture and are responsible for forwarding passive DNS data to the Privacy Shield. These sensors are deployed across heterogeneous environments, ranging from desktop computers and servers to embedded network routers. These platforms differ significantly in CPU capability, available memory, storage capacity, and supported software dependencies. As a result, a single sensor implementation would be inefficient or infeasible across all deployment scenarios.
+     </p>
+     <p class="lead">
+      To address this, multiple sensor implementations were developed and tailored for both resource-rich PC/server environments and resource-constrained routers. This design ensures efficient operation across diverse platforms without compromising performance, reliability, or privacy guarantees.
+      </p>
+      <p class="lead">To evaluate these design choices, different packet sniffing implementations were benchmarked and compared in terms of CPU load, memory usage, storage consumption, and traffic captured, as summarised in the table below </p>
+<table class="nice-table">
+  <caption>Performance of Each Sniffer</caption>
+    <thead>
+        <tr>
+            <th>Sniffer</th>
+            <th>Peak CPU Load (1 Minute)</th>
+            <th>Memory (Used)</th>
+            <th>Memory (Free)</th>
+            <th>Memory (Cached)</th>
+            <th>Storage (Space Used)</th>
+            <th>Traffic Captured (Packets)</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Baseline</td>
+            <td>0.00</td>
+            <td>~190MB</td>
+            <td>~180MB</td>
+            <td>~30MB</td>
+            <td>~290KB</td>
+            <td>N/A</td>
+        </tr>
+        <tr>
+            <td>Tcpdump</td>
+            <td>0.03</td>
+            <td>~210MB</td>
+            <td>~170MB</td>
+            <td>~36MB</td>
+            <td>~6MB</td>
+            <td>16894</td>
+        </tr>
+        <tr>
+            <td>PassiveDNS</td>
+            <td>0.06</td>
+            <td>~226MB</td>
+            <td>~152MB</td>
+            <td>~56MB</td>
+            <td>~10MB</td>
+            <td>9528</td>
+        </tr>
+        <tr>
+            <td>Python Scapy Sniffer</td>
+            <td>0.38</td>
+            <td>~294MB</td>
+            <td>~83MB</td>
+            <td>~63MB</td>
+            <td>~16MB</td>
+            <td>3103</td>
+        </tr>
+    </tbody>
+</table>
+      <h3 class="section-heading">Sensors Used</h3>
+      <h4 class="section-heading">PC/Servers (Python Based)</h4>
+      <p class="lead"> The PC/server sensor was implemented in Python and serves as the primary platform for development, testing, and full-scale deployments in resource-rich environments. As shown in the table above, the Python Scapy sniffer incurs higher CPU load, memory usage, and storage consumption compared to lightweight native sniffers. This overhead is primarily due to the Python interpreter and its associated libraries.
+      </p>
+      <p class="lead">Despite this, Python was selected for its flexibility, extensive library ecosystem, and ease of debugging, which enabled rapid development and iteration of encryption, anonymization, and data transmission logic. In PC and server environments, where CPU, memory, and storage resources are readily available, these overheads remain acceptable and do not impact system stability or performance. As a result, the Python-based sensor is well suited for development, testing, and feature-rich deployments where maintainability and extensibility are prioritised.</p>
+      
+<h4 class="section-heading">Routers (Compiled Binary)</h4>
+      <p class="lead"> Routers are typically front-line devices that capture DNS traffic at the network edge. They operate in highly resource-constrained environments, often offering limited RAM, flash storage, and minimal software support. This is evident from the router configuration shown, where only approximately 30 MiB of RAM and 7.5 MiB of storage remain available. </p>
+      <img src="{{ 'img\image.png' | relative_url }}" alt="Router Configuration" style="max-width: 100%; height: auto; margin: 20px 0;">
+      <p class="lead">To accommodate these constraints, the router sensor was implemented as a compiled binary targeting the aarch64 architecture. This approach eliminates the need for an interpreter or external runtime dependencies, significantly reducing both memory and storage requirements.</p>
+      <p class="lead">As reflected in the performance table, tools such as tcpdump and PassiveDNS exhibit substantially lower CPU and memory usage compared to the Python-based Scapy sniffer. These tools are implemented in C, a compiled language that is highly efficient and well suited for constrained environments. Their low overhead enables continuous packet capture on routers without degrading packet forwarding performance or system stability</p>
+<br>
+<p class="lead">In addition, packages like Tcpdump installed via package managers such as apk are extensively tested and maintained by official developers. They are optimized for performance, built with minimal dependencies, and free from unnecessary or redundant code that could introduce overhead. In contrast, open-source tools like PassiveDNS may include extra code for flexibility or extended features, which, while useful, can result in slightly higher resource usage and less streamlined performance</p>
+<h3 class="section-heading">Summary</h3>
+<p class="lead">In conclusion, supporting multiple sensor implementations is necessary to ensure compatibility across a wide range of deployment environments. While Python-based sensors are suitable for PCs and servers due to their flexibility and ease of development, routers require lightweight, resource-efficient solutions. Since embedded systems typically lack a Python interpreter and operate under strict resource constraints, compiled C-based sniffers provide superior performance, lower memory usage, and greater compatibility. This platform-specific approach enables efficient and reliable pDNS data collection across the entire Privacy Shield architecture
+</p>
+    </div>
+  </div>

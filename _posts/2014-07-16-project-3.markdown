@@ -3,182 +3,135 @@ title: Installation Manual
 subtitle: secure your privacy
 layout: default
 modal-id: 3
+order: 6
 ---
 
 <style>
-  /* overall layout */
-  body {
-    background: #fff;
-    color: #111;
-    font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial;
-    line-height: 1.65;
-    margin: 0;
-    padding: 0;
-  }
-
-  #content {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 32px 24px;
-  }
-
-  h1, h2, h3, h4 {
-    margin: 1em 0 .4em;
-    letter-spacing: .2px;
-  }
-
-  ol, ul {
-    margin: .5em 0 1em;
-    padding-left: 1.25rem;
-  }
-
-  ul {
-    list-style-type: disc; /* Make sure the bullet point is a filled circle */
-    color: black;         /* Set the bullet point color to black */
-  }
-
-  li { 
-    margin: .4em 0; 
-    color: #111;
-  }
-
-  .setup-panels {
-    margin: 20px 0 32px;
-  }
-
-  .setup-panels details {
-    border: 1px solid rgba(0,0,0,.12);
-    border-radius: 10px;
-    padding: 12px 16px;
-    margin-bottom: 12px;
-    background: #fafafa;
-    box-shadow: 0 6px 18px rgba(0,0,0,.05);
-  }
-
-  .setup-panels summary {
-    font-weight: 600;
-    cursor: pointer;
-    outline: none;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    justify-content: flex-start;
-    list-style: none;
-    text-align: left;
-  }
-
-  .setup-panels summary::before {
-    content: "▾";
-    font-size: 0.9em;
-    transition: transform .2s ease;
-  }
-
-  .setup-panels details[open] summary::before {
-    content: "▴";
-  }
-
-  .setup-panels summary::-webkit-details-marker {
-    display: none;
-  }
-
-  .setup-panels pre {
-    background: #0d1117;
-    color: #f8fafc;
-    padding: 10px 14px;
-    border-radius: 8px;
-    overflow-x: auto;
-    margin: 8px 0 0;
-  }
-
-  /* inline code */
-  :not(pre) > code {
-    background: #f3f4f6;
-    border: 1px solid #e5e7eb;
-    padding: 2px 6px;
-    border-radius: 6px;
-    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-    font-size: .95em;
-  }
-
-  /* code card styling */
-  .code-card {
-    position: relative;
-    background: #0d1117;
-    border-radius: 10px;
-    margin: 16px 0 4px;
-    box-shadow: 0 6px 16px rgba(0,0,0,.12);
-    overflow: hidden;
-  }
-  .code-toolbar {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    background: #161b22;
-    border-bottom: 1px solid #30363d;
-    padding: 8px 12px;
-    color: #8b949e;
-    font-size: 12px;
-    text-transform: uppercase;
-    letter-spacing: .06em;
-  }
-  .copy-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    background: transparent;
-    color: #8b949e;
-    border: 1px solid #30363d;
-    padding: 4px 8px;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 12px;
-    transition: border-color .2s, color .2s, transform .05s;
-  }
-  .copy-btn:hover { color: #fff; border-color: #2f81f7; }
-  .copy-btn:active { transform: translateY(1px); }
-  .copy-icon { width: 14px; height: 14px; stroke: currentColor; fill: none; }
-
-  pre {
-    margin: 0;
-    background: #0d1117;
-    color: #c9d1d9;
-    padding: 14px 16px;
-    overflow-x: auto;
-    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-    font-size: 13px;
-    line-height: 1.55;
-    tab-size: 4;              /* wider indentation for JSON readability */
-    white-space: pre-wrap;    /* keeps indentation & wraps long lines */
-    word-break: break-word;   /* avoids horizontal scroll explosion */
+body {
+  background:#fff;
+  color:#111;
+  font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial;
+  line-height:1.65;
+  margin:0;
 }
-  .code-card + p {
-    margin-top: 0.4em;
-  }
+#content {max-width:900px;margin:0 auto;padding:32px 24px;}
+h1,h2,h3,h4 {margin:1em 0 .4em;letter-spacing:.2px;}
+ol,ul {margin:.5em 0 1em;padding-left:1.25rem;}
+ul {list-style:disc;color:#111;}
+li {margin:.4em 0;}
+.setup-panels {margin:20px 0 32px;}
+.setup-panels details {
+  border:1px solid rgba(0,0,0,.12);
+  border-radius:10px;
+  padding:12px 16px;
+  margin-bottom:12px;
+  background:#fafafa;
+  box-shadow:0 6px 18px rgba(0,0,0,.05);
+}
+.setup-panels details[open] {border:none;box-shadow:none;background:transparent;padding:0;}
+.setup-panels summary {
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-weight:600;
+  cursor:pointer;
+  list-style:none;
+  text-align:left;
+}
+.setup-panels summary::before {content:'>';font-size:.9em;}
+.setup-panels details[open] summary {padding:12px 0;}
+.setup-panels details[open] summary::before {content:'v';}
+.setup-panels summary::-webkit-details-marker {display:none;}
+.setup-panels details[open]>*:not(summary) {margin-top:12px;}
+pre {
+  margin:0;
+  background:#0d1117;
+  color:#c9d1d9;
+  padding:14px 16px;
+  border-radius:8px;
+  overflow-x:auto;
+  font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+  font-size:13px;
+  line-height:1.55;
+  tab-size:4;
+  white-space:pre-wrap;
+  word-break:break-word;
+}
 
+.arg-highlight {
+  color:#ffd166;
+  font-weight:600;
+}
 
-  .copied-badge {
-    position: absolute;
-    top: 8px; right: 10px;
-    background: rgba(46,160,67,.15);
-    color: #2ea043;
-    border: 1px solid rgba(46,160,67,.35);
-    padding: 2px 6px;
-    border-radius: 999px;
-    font-size: 12px;
-    opacity: 0;
-    transition: opacity .15s ease-in-out;
-    pointer-events: none;
-  }
-  .copied-badge.show { opacity: 1; }
+:not(pre)>code {
+  background:#f3f4f6;
+  border:1px solid #e5e7eb;
+  padding:2px 6px;
+  border-radius:6px;
+  font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+  font-size:.95em;
+}
+.code-card {
+  position:relative;
+  background:#0d1117;
+  border-radius:10px;
+  margin:16px 0 4px;
+  box-shadow:0 6px 16px rgba(0,0,0,.12);
+  overflow:hidden;
+}
+.code-toolbar {
+  display:flex;
+  justify-content:flex-end;
+  align-items:center;
+  background:#161b22;
+  border-bottom:1px solid #30363d;
+  padding:8px 12px;
+  color:#8b949e;
+  font-size:12px;
+  text-transform:uppercase;
+  letter-spacing:.06em;
+}
+.copy-btn {
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  background:transparent;
+  color:#8b949e;
+  border:1px solid #30363d;
+  padding:4px 8px;
+  border-radius:6px;
+  cursor:pointer;
+  font-size:12px;
+  transition:border-color .2s,color .2s,transform .05s;
+}
+.copy-btn:hover {color:#fff;border-color:#2f81f7;}
+.copy-btn:active {transform:translateY(1px);}
+.copy-icon {width:14px;height:14px;stroke:currentColor;fill:none;}
+.code-card+p {margin-top:.4em;}
+.copied-badge {
+  position:absolute;
+  top:8px;
+  right:10px;
+  background:rgba(46,160,67,.15);
+  color:#2ea043;
+  border:1px solid rgba(46,160,67,.35);
+  padding:2px 6px;
+  border-radius:999px;
+  font-size:12px;
+  opacity:0;
+  transition:opacity .15s ease-in-out;
+  pointer-events:none;
+}
+.copied-badge.show {opacity:1;}
 </style>
+
 
 <div class="col-md-12 text-left">
   <div id="content">
     <div id="manual">
-      <!-- Example pasted block -->
-      <h3>How to setup?</h3>
+      <h3>Privacy Shield configuration</h3>
       <ol>
-        <li>Clone the github Repository <em>PDNS_PRIVACY</em> from git. You should have the following 3 folders:
+        <li>Clone the GitHub repository <em>PDNS_PRIVACY</em> using Git. You should have the following three folders:
           <ul>
             <li>pdns_collector</li>
             <li>pdns_privacy_shield</li>
@@ -186,12 +139,12 @@ modal-id: 3
           </ul>
         </li>
         <li>
-          Create a virtual environment in every folder and download <code>requirements.txt</code>
+          Create a virtual environment in every folder and install the packages listed in <code>requirements.txt</code>
           <div class="setup-panels">
             <details>
               <summary>Windows (PowerShell)</summary>
               <pre><code>python -m venv .venv
-.venv/Scripts/Activate.ps1
+.\.venv\Scripts\Activate.ps1
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 pip install -r .\requirements.txt</code></pre>
             </details>
@@ -216,8 +169,8 @@ pip3 install -r requirements.txt</code></pre>
               <summary>Privacy Shield</summary>
               <ul>
                 <li><strong>Today's Password - </strong><em>Obtain the password from the Passive DNS Dashboard</em></li>
-                <li><strong>GUID - </strong><em>obtined From <code>user.db</code></em></li>
-                <li><strong>Ip address - </strong><em>Host's ip adsress</em></li>
+                <li><strong>GUID - </strong><em>obtained from <code>user.db</code></em></li>
+                <li><strong>IP address - </strong><em>Host's IP address</em></li>
                 <li><strong>Username - </strong><em>obtained from <code>database.py</code> under pdns_privacy_shield</em></li>
                 <li><strong>Password - </strong><em>obtained from <code>database.py</code> under pdns_privacy_shield</em></li>
               </ul>
@@ -226,20 +179,26 @@ pip3 install -r requirements.txt</code></pre>
               <summary>Sensor</summary>
               <ul>
                 <li><strong>Sensor ID - </strong><em>Create your own ID</em></li>
-                <li><strong>Today's Password - </strong><em>Must match the password enetered pdns_privacy_shield</em></li>
-                <li><strong>Ip Address:port number - </strong><em>Provide the IP address and port number of the Sensor Dashboard instance.</em></li>
+                <li><strong>Today's Password - </strong><em>Must match the password entered in pdns_privacy_shield</em></li>
+                <li><strong>IP address:port number - </strong><em>Provide the IP address and port number of the Sensor Dashboard instance.</em></li>
               </ul>
             </details>
+            <small><em style="color:red;">*The collector runs without any arguments</em></small>
           </div>
         </li>
       </ol>
       <h3>Persistent Service Configuration</h3>
-      <p>Reliable, long-running processes are essential for system stability. To achieve this, we can configure the application as a persistent service using systemd, allowing it to run automatically and recover from failures.</p>
-      <ol>
-        <li>Create a new service file. Example:</li>
-        <pre><code>sudo nano /etc/systemd/system/<em>service-name</em>.service</code></pre>
-        <li>Define how the service runs. Update the service file with:</li>
-        <pre><code>[Unit]
+      <p>Reliable, long-running processes are essential for system stability. To achieve this, we can configure the application as a persistent service using the appropriate system service manager for each OS.</p>
+<small>repeat the steps below for <code>privacyshield.py</code>and <code>collector.py</code> as well</small>
+<div class="setup-panels">
+<details>
+  <summary>Systemd (Linux)</summary>
+  <ol>
+    <li>Create a new service file:</li>
+    <pre><code>sudo nano /etc/systemd/system/<span class="arg-highlight">&lt;SERVICE_NAME&gt;</span>.service</code></pre>
+
+    <li>Define how the service runs:</li>
+    <pre><code>[Unit]
 Description=PDNS Sensor
 After=network-online.target
 Wants=network-online.target
@@ -247,7 +206,7 @@ Wants=network-online.target
 [Service]
 Type=simple
 WorkingDirectory=/opt/pdns_sensor
-ExecStart=/opt/pdns_sensor/.venv/Scripts/python.exe https_sensor.py <em>sensor_id</em> <em>today_password</em> <em>ip_address:port_number</em>
+ExecStart=<span class="arg-highlight">&lt;PYTHON_PATH&gt;</span> https_sensor.py <span class="arg-highlight">&lt;SENSOR_ID&gt;</span> <span class="arg-highlight">&lt;TODAY_PASSWORD&gt;</span> <span class="arg-highlight">&lt;IP_ADDRESS:PORT&gt;</span>
 Restart=always
 RestartSec=5
 User=root
@@ -256,76 +215,178 @@ Environment=PYTHONUNBUFFERED=1
 [Install]
 WantedBy=multi-user.target
 </code></pre>
-        <li>Reload systemd to read the new service:</li>
-        <pre><code>sudo systemctl daemon-reload</code></pre>
-        <li>Start the service:</li>
-        <pre><code>sudo systemctl start privacyshield</code></pre>
-        <li>Enable the service on boot:</li>
-        <pre><code>sudo systemctl enable privacyshield</code></pre>
-        <li>Check the service status:</li>
-        <pre><code>systemctl status privacyshield</code></pre>
-      </ol>
+
+    <li>Reload systemd:</li>
+    <pre><code>sudo systemctl daemon-reload</code></pre>
+
+    <li>Start the service:</li>
+    <pre><code>sudo systemctl start <span class="arg-highlight">&lt;SERVICE_NAME&gt;</span></code></pre>
+
+    <li>Enable at boot:</li>
+    <pre><code>sudo systemctl enable <span class="arg-highlight">&lt;SERVICE_NAME&gt;</span></code></pre>
+
+    <li>Check status:</li>
+    <pre><code>systemctl status <span class="arg-highlight">&lt;SERVICE_NAME&gt;</span></code></pre>
+  </ol>
+</details>
+</div>
+
+<div class="setup-panels">
+<details>
+  <summary>launchd (macOS)</summary>
+  <ol>
+    <li>Create a new .plist file:</li>
+    <pre><code>nano ~/Library/LaunchAgents/<span class="arg-highlight">&lt;SERVICE_NAME&gt;</span>.plist</code></pre>
+
+    <li>Add configuration:</li>
+    <pre><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
+ "http://www.apple.com/DTDs/PropertyList-1.0.dtd"&gt;
+&lt;plist version="1.0"&gt;
+&lt;dict&gt;
+
+  &lt;key&gt;Label&lt;/key&gt;
+  &lt;string&gt;<span class="arg-highlight">&lt;SERVICE_NAME&gt;</span>&lt;/string&gt;
+
+  &lt;key&gt;WorkingDirectory&lt;/key&gt;
+  &lt;string&gt;<span class="arg-highlight">&lt;PATH_TO_PROJECT_DIRECTORY&gt;</span>&lt;/string&gt;
+
+  &lt;key&gt;ProgramArguments&lt;/key&gt;
+  &lt;array&gt;
+      &lt;string&gt;<span class="arg-highlight">&lt;PATH_TO_PYTHON&gt;</span>&lt;/string&gt;
+      &lt;string&gt;<span class="arg-highlight">&lt;SCRIPT_NAME&gt;</span>&lt;/string&gt;
+      &lt;string&gt;<span class="arg-highlight">&lt;SENSOR_ID&gt;</span>&lt;/string&gt;
+      &lt;string&gt;<span class="arg-highlight">&lt;TODAY_PASSWORD&gt;</span>&lt;/string&gt;
+      &lt;string&gt;<span class="arg-highlight">&lt;IP_ADDRESS:PORT&gt;</span>&lt;/string&gt;
+  &lt;/array&gt;
+
+  &lt;key&gt;RunAtLoad&lt;/key&gt;&lt;true/&gt;
+  &lt;key&gt;KeepAlive&lt;/key&gt;&lt;true/&gt;
+
+  &lt;key&gt;EnvironmentVariables&lt;/key&gt;
+  &lt;dict&gt;
+      &lt;key&gt;PYTHONUNBUFFERED&lt;/key&gt;
+      &lt;string&gt;1&lt;/string&gt;
+  &lt;/dict&gt;
+
+&lt;/dict&gt;
+&lt;/plist&gt;
+</code></pre>
+
+    <li>Load the service:</li>
+    <pre><code>launchctl load ~/Library/LaunchAgents/<span class="arg-highlight">&lt;SERVICE_NAME&gt;</span>.plist</code></pre>
+
+    <li>Start it manually:</li>
+    <pre><code>launchctl start <span class="arg-highlight">&lt;SERVICE_NAME&gt;</span></code></pre>
+
+    <li>Check status:</li>
+    <pre><code>launchctl list | grep <span class="arg-highlight">&lt;SERVICE_NAME&gt;</span></code></pre>
+  </ol>
+</details>
+</div>
+
+<div class="setup-panels">
+<details>
+  <summary>Task Scheduler (Windows)</summary>
+  <ol>
+    <li>Create a task.xml file:</li>
+    <pre><code>task.xml</code></pre>
+
+    <li>Add configuration:</li>
+    <pre><code>&lt;?xml version="1.0" encoding="UTF-16"?&gt;
+&lt;Task version="1.4" xmlns="http://schemas.microsoft.com/windows/2004/02/mit/task"&gt;
+
+  &lt;Triggers&gt;
+    &lt;LogonTrigger&gt;
+      &lt;Enabled&gt;true&lt;/Enabled&gt;
+    &lt;/LogonTrigger&gt;
+  &lt;/Triggers&gt;
+
+  &lt;Principals&gt;
+    &lt;Principal id="Author"&gt;
+      &lt;RunLevel&gt;HighestAvailable&lt;/RunLevel&gt;
+    &lt;/Principal&gt;
+  &lt;/Principals&gt;
+
+  &lt;Actions Context="Author"&gt;
+    &lt;Exec&gt;
+      &lt;Command&gt;<span class="arg-highlight">&lt;PYTHON_PATH&gt;</span>&lt;/Command&gt;
+      &lt;Arguments&gt;<span class="arg-highlight">&lt;SCRIPT_NAME&gt;</span> <span class="arg-highlight">&lt;SENSOR_ID&gt;</span> <span class="arg-highlight">&lt;TODAY_PASSWORD&gt;</span> <span class="arg-highlight">&lt;IP_ADDRESS:PORT&gt;</span>&lt;/Arguments&gt;
+      &lt;WorkingDirectory&gt;<span class="arg-highlight">&lt;WORKING_DIRECTORY&gt;</span>&lt;/WorkingDirectory&gt;
+    &lt;/Exec&gt;
+  &lt;/Actions&gt;
+
+&lt;/Task&gt;
+</code></pre>
+
+    <li>Register task:</li>
+    <pre><code>schtasks /Create /TN "<span class="arg-highlight">&lt;SERVICE_NAME&gt;</span>" /XML task.xml /F</code></pre>
+
+    <li>Start service:</li>
+    <pre><code>schtasks /Run /TN "<span class="arg-highlight">&lt;SERVICE_NAME&gt;</span>"</code></pre>
+
+    <li>Check last run:</li>
+    <pre><code>schtasks /Query /TN "<span class="arg-highlight">&lt;SERVICE_NAME&gt;</span>" /V /FO LIST</code></pre>
+
+    <li>Delete:</li>
+    <pre><code>schtasks /Delete /TN "<span class="arg-highlight">&lt;SERVICE_NAME&gt;</span>" /F</code></pre>
+  </ol>
+</details>
+</div>
+
     </div>
   </div>
 </div>
 <script>
-(function () {
-  const container = document.getElementById('content');
-  if (!container || container.dataset.copyEnhancer === 'done') {
-    return;
-  }
-  container.dataset.copyEnhancer = 'done';
+(() => {
+  const root = document.getElementById('content');
+  if (!root || root.dataset.copyEnhancer) return;
+  root.dataset.copyEnhancer = 'done';
 
-  // Clean up any previously wrapped blocks (prevents double wrappers)
-  container.querySelectorAll('.code-card').forEach(card => {
+  root.querySelectorAll('.code-card').forEach(card => {
     const pre = card.querySelector('pre');
-    if (pre && card.parentElement) {
-      card.replaceWith(pre);
-    }
+    if (pre) card.replaceWith(pre);
   });
 
-  // Automatically wrap code blocks in toolbar + copy button
-  container.querySelectorAll('pre > code').forEach(codeEl => {
-    if (codeEl.closest('.code-card')) {
-      return; // already wrapped
-    }
+  const template = `
+    <svg class="copy-icon" viewBox="0 0 24 24" stroke-width="1.8" aria-hidden="true">
+      <rect x="9" y="9" width="11" height="11" rx="2"></rect>
+      <path d="M15 9V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h3"></path>
+    </svg>
+    <span>Copy</span>`;
 
-    const pre = codeEl.parentElement;
+  const wrap = code => {
+    if (code.closest('.code-card')) return;
+    const pre = code.parentElement;
     const card = document.createElement('div');
     card.className = 'code-card';
     const toolbar = document.createElement('div');
     toolbar.className = 'code-toolbar';
     const btn = document.createElement('button');
     btn.className = 'copy-btn';
-    btn.innerHTML = `
-    <svg class="copy-icon" viewBox="0 0 24 24" stroke-width="1.8" aria-hidden="true">
-      <rect x="9" y="9" width="11" height="11" rx="2"></rect>
-      <path d="M15 9V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h3"></path>
-    </svg>
-    <span>Copy</span>`;
+    btn.innerHTML = template;
     const badge = document.createElement('div');
     badge.className = 'copied-badge';
-    //badge.textContent = 'Copied!';
+
+    pre.parentElement.replaceChild(card, pre);
+    card.append(toolbar, pre, badge);
     toolbar.appendChild(btn);
-    const parent = pre.parentElement;
-    parent.replaceChild(card, pre);
-    card.appendChild(toolbar);
-    card.appendChild(pre);
-    card.appendChild(badge);
+
     btn.addEventListener('click', async () => {
-      const text = codeEl.innerText.replace(/\u00A0/g, ' ');
       try {
-        await navigator.clipboard.writeText(text);
+        await navigator.clipboard.writeText(code.innerText.replace(/\u00A0/g, ' '));
         badge.classList.add('show');
         btn.querySelector('span').textContent = 'Copied';
         setTimeout(() => {
           badge.classList.remove('show');
           btn.querySelector('span').textContent = 'Copy';
         }, 1400);
-      } catch (e) {
-        console.error('Copy failed', e);
+      } catch (err) {
+        console.error('Copy failed', err);
       }
     });
-  });
+  };
+
+  root.querySelectorAll('pre > code').forEach(wrap);
 })();
 </script>

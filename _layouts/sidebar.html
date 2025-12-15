@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ page.title }}</title>
+  <style>
+    .layout {
+      display: flex;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .sidebar {
+      width: 250px;
+      padding: 20px;
+      border-right: 1px solid #ddd;
+    }
+
+    .sidebar a {
+      display: block;
+      margin-bottom: 10px;
+      color: #333;
+      text-decoration: none;
+    }
+
+    .sidebar a:hover {
+      font-weight: bold;
+    }
+
+    .content {
+      flex: 1;
+      padding: 30px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="layout">
+  <aside class="sidebar">
+    <h3>Navigation</h3>
+    <a href="{{ '/_posts\2014-07-18-project-3.markdown/' | relative_url }}">pDNS</a>
+    <a href="{{ '/_posts\2014-07-17-project-3.markdown/' | relative_url }}">Project Overview</a>
+    <a href="{{ '/sensors/' | relative_url }}">Sensors</a>
+    <a href="{{ '/_posts\2014-07-14-project-5.markdown/' | relative_url }}">Development Setup</a>
+    <a href="{{ '/_posts\2014-07-16-project-3.markdown/' | relative_url }}">Installation Manual</a>
+    <a href="{{ '/_posts\2014-07-15-project-4.markdown/' | relative_url }}">Future Work</a>
+  </aside>
+
+  <main class="content">
+    {{ content }}
+  </main>
+</div>
+
+</body>
+</html>

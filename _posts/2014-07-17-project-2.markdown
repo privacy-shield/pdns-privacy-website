@@ -3,12 +3,13 @@ title: Project Overview
 subtitle: project architecture
 layout: default
 modal-id: 2
+order: 2
 ---
 <!--div class="container-fluid"-->
   <div class="row">
     <div class="col-md-12 text-left">
       <h3 class="section-heading">Project Components</h3>
-      <img src="img/portfolio/comp_flow.png" alt="Component Flowchart" style="max-width: 100%; height: auto; margin: 20px 0;">
+      <img src="{{ '/img/portfolio/comp_flow.png' | relative_url }}" alt="Component Flowchart" style="max-width: 100%; height: auto; margin: 20px 0;">
       <h4 class="section-heading">
       Sensor
       </h4>
@@ -22,7 +23,6 @@ modal-id: 2
       </h4>
       <p class="lead"> The pDNS collector is responsible for storing and aggregating the DNS query data captured by sensors. It organizes and stores the data in a centralized database for further analysis. The collector helps maintain historical records of DNS queries, which can be used for forensics, incident response, and identifying long-term patterns or trends in network behavior.</p>
       <h3 class="section-heading">Data processing</h3>
-      <img src="img/portfolio/psp.png" alt="pDNS Flowchart" style="max-width: 100%; height: auto; margin: 20px 0;">
       <p class="lead">
        The sensor sends DNS queries to the shield via UDP packets. This data is then stored in a database. The privacy shield then extracts necessary information to maintain anonymity and is then stored back into the database. The pDNS Collector then retrieves the stored data which is subsequently used for analysis. Throughout the process, a heartbeat mechanism is used to ensure continuos monitoring and synchronisation of the system, allowing real-time data updates.
       </p>

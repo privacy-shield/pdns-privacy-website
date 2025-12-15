@@ -1,3 +1,21 @@
+<style>
+/* Adjust GitHub icon size, color, and alignment */
+.navbar .fab.fa-github {
+    font-size: 3em; /* adjust size */
+    color: #fff; /* match navbar text color */
+    margin-left: 15px; /* spacing from "Join Us" */
+    display: inline-block;
+    vertical-align: middle; /* aligns with text links */
+}
+
+/* Optional: adjust all nav links to center vertically */
+.navbar-nav > li > a {
+    line-height: 50px; /* match navbar height */
+    padding-top: 0; 
+    padding-bottom: 0;
+}
+</style>
+
 <!-- Navigation -->
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container">
@@ -10,6 +28,8 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand page-scroll" href="#page-top">{{site.title}}</a>
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -24,9 +44,17 @@
                     <li>
                         <a class="page-scroll" href="#portfolio">Insights</a>
                     </li>
+                    <li><a class="page-scroll" href="#team">Team</a></li>
+
                     <li>
                         <a class="page-scroll" href="#about">Join Us</a>
                     </li>
+                    <li>
+  <a href="https://github.com/your-username/your-repo" target="_blank">
+    <i class="fab fa-github"></i>
+  </a>
+</li>
+
                 </ul>
             </div>
             <!-- /.navbar-collapse -->

@@ -3,6 +3,7 @@ title: pDNS
 subtitle: Protecting DNS privacy
 layout: default
 modal-id: 1
+order: 1
 ---
 <!--div class="container-fluid"-->
   <div class="row">
@@ -11,7 +12,7 @@ modal-id: 1
       <p class="lead">
         Passive DNS, short for Passive Domain Name System, is a tool commonly used for security and network monitoring purposes. While DNS (Domain Name System) serves as the protocol that translates human-readable domain names (such as www.google.com) into IP addresses for enabling communication between devices over the internet, pDNS goes a step further. Instead of actively querying DNS servers, pDNS passively records DNS query data that has already been made, either by other users, systems, or devices.
       </p>
-      <img src="img/portfolio/dns_flowchart.jpg" alt="pDNS Flowchart" style="max-width: 100%; height: auto; margin: 20px 0;">
+      <img src="{{ '/img/portfolio/dns_flowchart.jpg' | relative_url }}" alt="pDNS Flowchart" style="max-width: 100%; height: auto; margin: 20px 0;">
       <p class="lead">
        With pDNS, security teams can track the queries made to malicious domains, detect patterns of suspicious behavior, and even investigate incidents after they occur, without compromising the privacy of users. Usually, pDNS does not collect personally identifiable information; instead, it logs only anonymized DNS query data, making it an effective tool for cybersecurity monitoring while respecting user privacy.
       </p>

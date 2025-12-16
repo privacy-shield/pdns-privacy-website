@@ -17,11 +17,24 @@
 
 /* Layout */
 .team-members {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   gap: 3rem;
+  justify-items: center;
 }
+
+@media (max-width: 1200px) {
+  .team-members {
+    grid-template-columns: repeat(2, 1fr); /* 2 × 2 */
+  }
+}
+
+@media (max-width: 600px) {
+  .team-members {
+    grid-template-columns: 1fr;
+  }
+}
+
 
 .team-member {
   width: 260px;
@@ -117,6 +130,13 @@
       <img src="/assets/images/jane.jpg">
       <h3>Jane Smith</h3>
       <p>Designer</p>
+    </div>
+
+    <div class="team-member">
+      <img src="/assets/images/alice.jpg">
+      <h3>Alice Tan</h3>
+      <p>Project Lead</p>
+
     </div>
   </div>
 

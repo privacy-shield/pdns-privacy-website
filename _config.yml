@@ -1,5 +1,5 @@
 url: https://pdns-shield.github.io
-baseurl: /agency-jekyll-theme/
+baseurl: /pdns-privacy-website/  # the subpath of your site, e.g. /blog
 
 # Site settings
 title: PDNS Privacy Shield

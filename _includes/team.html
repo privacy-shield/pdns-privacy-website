@@ -18,10 +18,13 @@
 /* Layout */
 .team-members {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(240px, max-content));
   gap: 3rem;
-  justify-items: center;
+
+  justify-content: center; /* centers the whole grid */
+  justify-items: center;   /* centers each item */
 }
+
 
 @media (max-width: 1200px) {
   .team-members {
@@ -140,7 +143,7 @@
     </div>
   </div>
 
-  <h2>Contributors & Partners</h2>
+  <h2 class="section-heading">Contributors & Partners</h2>
   <div class="team-members">
     <div class="team-member">
       <img src="/assets/images/opensource.png">

@@ -1,6 +1,6 @@
 ﻿---
-title: Development setup
-subtitle: Test it out!
+title: Development Setup
+subtitle: Test It Out
 layout: default
 modal-id: 5
 order: 5
@@ -297,7 +297,7 @@ order: 5
         </video>
       </div>
       <ol>
-        <<li>Follow steps 1 and 2 from the
+        <li>Follow steps 1 and 2 from the
   <a href="{{ '/2014/07/16/project-3/' | relative_url }}">Installation Manual</a> before moving on to step 2
 </li>
       </ol>
@@ -362,14 +362,6 @@ order: 5
 
   <div class="inner">
     <section class="dev-guide">
-    <h3 class="section-heading">OpenWrt</h3>
-    <p class="lead" style="font-size:1.5em; line-height:1.4;">
-      As part of this project, the team used an OpenWrt router running on an AArch64 architecture to run a working pDNS data sensor and simulate pDNS data collection in an organization. The router was also chosen to provide optimal performance with minimal resource usage.
-      <br><br>
-      <img src="{{ '/img/router.jpg' | relative_url }}" alt="OpenWrt router" style="display:block; width:80%; max-width:620px; height:auto; border-radius:12px; margin:0 auto 20px;">
-      <br><br>
-      This project involves using cross-compilation. This allows building the program on a separate, more capable system while targeting the specific AArch64 architecture of the OpenWrt router. This process ensures that the compiled binaries, along with their necessary dependencies, are fully compatible with the router's environment. 
-    </p>
     <ul>
       <h3 class="section-heading">Cross-Compilation Setup</h3>
       <ol>

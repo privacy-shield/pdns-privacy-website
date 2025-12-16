@@ -1,6 +1,6 @@
 ---
 title: Future Work
-subtitle: new ideas
+subtitle: New Ideas
 layout: default
 modal-id: 4
 order: 3

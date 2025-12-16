@@ -1,6 +1,6 @@
 ---
 title: Sensors 
-subtitle: Project testing!
+subtitle: Project Testing
 layout: sidebar
 permalink: /sensors/
 modal-id: 6

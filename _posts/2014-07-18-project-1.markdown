@@ -1,6 +1,6 @@
 ---
 title: pDNS
-subtitle: Protecting DNS privacy
+subtitle: Protecting DNS Privacy
 layout: default
 modal-id: 1
 order: 1

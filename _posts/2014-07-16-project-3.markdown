@@ -1,6 +1,6 @@
 ---
 title: Installation Manual
-subtitle: secure your privacy
+subtitle: Secure Your Privacy
 layout: default
 modal-id: 3
 order: 6

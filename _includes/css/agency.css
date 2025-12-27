@@ -1,8 +1,10 @@
-﻿/*!
+/*!
  * Start Bootstrap - Agency Bootstrap Theme (http://startbootstrap.com)
  * Code licensed under the Apache License v2.0.
  * For details, see http://www.apache.org/licenses/LICENSE-2.0.
  */
+
+@import url("https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600&display=swap");
 
 body {
     overflow-x: hidden;
@@ -328,10 +330,123 @@ section {
     padding: 100px 0;
 }
 
+body.index section {
+    background-color: #ffffff;
+}
+
+body.index section:nth-of-type(even) {
+    background-color: #f7f7f7;
+}
+
+body.index section.bg-darkest-gray {
+    background-color: #222;
+}
+
+body.index section#about {
+    background-color: #ffffff;
+}
+
+.video-hero {
+    position: relative;
+    padding: 160px 0 180px;
+    background:
+        radial-gradient(900px 420px at 50% 0%,
+            rgba(27, 173, 205, 0.28),
+            rgba(255, 255, 255, 0) 70%),
+        linear-gradient(
+            180deg,
+            #f4f7fb 0%,
+            #ffffff 55%,
+            #f2f5f9 100%
+        );
+    overflow: hidden;
+}
+
+/* Wider hero container */
+.video-hero .video-hero-inner {
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+/* Header: tighter + more deliberate */
+.video-hero .video-hero-header {
+    text-align: center;
+    margin-bottom: 56px;
+}
+
+.video-hero .video-hero-header .section-heading {
+    margin-bottom: 12px;
+    color: #1a1f2b;
+}
+
+/* Core video frame emphasis */
+.video-hero .video-frame {
+    position: relative;
+    padding: 16px;
+    border-radius: 24px;
+    background: linear-gradient(180deg, #0b1220, #020617);
+    box-shadow:
+        0 40px 90px rgba(15, 23, 42, 0.35),
+        0 0 0 1px rgba(255,255,255,0.06);
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Keep your glow, but anchor it lower */
+.video-hero .video-frame::before {
+    content: "";
+    position: absolute;
+    inset: -24px;
+    border-radius: 34px;
+    background: radial-gradient(
+        60% 60% at 50% 30%,
+        rgba(59, 130, 246, 0.22),
+        rgba(59, 130, 246, 0)
+    );
+    z-index: 0;
+}
+
+.video-hero .video-frame .embed-responsive {
+    position: relative;
+    z-index: 1;
+    border-radius: 18px;
+    overflow: hidden;
+}
+
+.video-hero .video-frame video {
+    border-radius: 18px;
+}
+
+/* Center column, no side bias */
+.video-hero .video-column-right {
+    margin: 0 auto;
+    float: none;
+}
+
+/* Mobile tuning */
+@media (max-width: 768px) {
+    .video-hero {
+        padding: 110px 0 120px;
+    }
+
+    .video-hero .video-hero-header {
+        margin-bottom: 36px;
+    }
+
+    .video-hero .video-frame {
+        padding: 12px;
+    }
+}
+
 section h2.section-heading {
     margin-top: 0;
     margin-bottom: 15px;
     font-size: 40px;
+}
+
+#portfolio .section-heading {
+    margin-bottom: 60px;
 }
 
 section h3.section-subheading {
@@ -354,6 +469,92 @@ section h3.section-subheading {
     text-transform: none;
 }
 
+#services .service-heading,
+#services .section-subheading,
+#services .text-muted {
+    font-family: "Fredoka","Trebuchet MS",sans-serif;
+}
+
+#services .service-heading {
+    font-size: 22px;
+    letter-spacing: 0.4px;
+}
+
+#services .text-muted {
+    font-size: 18px;
+    line-height: 1.7;
+}
+
+#about,
+#portfolio .portfolio-item .portfolio-card {
+    font-family: "Fredoka","Trebuchet MS",sans-serif;
+}
+
+#about p,
+#about .contact-links a,
+#about .contact-links .contact-item,
+#portfolio .portfolio-item .portfolio-card h4 {
+    font-size: 18px;
+}
+
+#portfolio .portfolio-item .portfolio-card .insight-subtitle,
+#portfolio .portfolio-item .portfolio-card .insight-summary {
+    font-size: 16px;
+}
+
+/* Subtle cyber enhancement */
+#services .fa-circle {
+    background: linear-gradient(135deg, #7dd3fc 0%, #3b82f6 55%, #1e3a8a 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+
+    /* softer base glow */
+    text-shadow:
+        0 0 10px rgba(59, 130, 246, 0.35),
+        0 0 20px rgba(59, 130, 246, 0.15);
+
+    animation: cyberGlow 3.2s ease-in-out infinite;
+}
+
+#services .fa-inverse {
+    color: #0b0f1a;
+    text-shadow: 0 0 6px rgba(125, 211, 252, 0.25);
+}
+
+/* Gentle pulsing glow */
+@keyframes cyberGlow {
+    0% {
+        text-shadow:
+            0 0 8px rgba(59, 130, 246, 0.25),
+            0 0 16px rgba(59, 130, 246, 0.12);
+    }
+    50% {
+        text-shadow:
+            0 0 14px rgba(125, 211, 252, 0.45),
+            0 0 26px rgba(59, 130, 246, 0.25);
+    }
+    100% {
+        text-shadow:
+            0 0 8px rgba(59, 130, 246, 0.25),
+            0 0 16px rgba(59, 130, 246, 0.12);
+    }
+}
+
+/* Hover: slight lift + signal boost */
+#services .fa-stack:hover {
+    transform: translateY(-3px);
+    transition: transform 0.2s ease;
+}
+
+#services .fa-stack:hover .fa-circle {
+    text-shadow:
+        0 0 18px rgba(125, 211, 252, 0.55),
+        0 0 32px rgba(59, 130, 246, 0.35);
+}
+
+
+
 #portfolio .portfolio-item {
     display: flex;
     justify-content: center;
@@ -368,7 +569,7 @@ section h3.section-subheading {
     gap: 10px;
     width: 100%;
     max-width: 320px;
-    margin: 0 auto 30px;
+    margin: 0 auto 42px;
     padding: 22px 18px;
     text-align: center;
     text-transform: none;
@@ -376,7 +577,7 @@ section h3.section-subheading {
     background-color: #fff;
     border: 1px solid rgba(0,0,0,.08);
     border-radius: 14px;
-    box-shadow: 0 10px 25px rgba(0,0,0,.06);
+    box-shadow: 0 12px 28px rgba(0,0,0,.14);
     transition: transform .2s ease, box-shadow .2s ease;
     min-height: 210px;
     color: inherit;
@@ -385,32 +586,45 @@ section h3.section-subheading {
 #portfolio .portfolio-item .portfolio-card h4 {
     margin: 0 0 10px;
     font-weight: 700;
-    font-size: 1.15rem;
+    font-size: 22px;
     line-height: 1.4;
     letter-spacing: .3px;
     text-decoration: none;
     word-break: normal;
     hyphens: auto;
+    font-family: "Fredoka","Trebuchet MS",sans-serif;
+    text-transform: none;
 }
 
 #portfolio .portfolio-item .portfolio-card .insight-subtitle {
     margin: 0;
-    font-size: 0.88em;
+    font-size: 18px;
     line-height: 1.35;
     color: #777;
     text-decoration: none;
+    font-family: "Fredoka","Trebuchet MS",sans-serif;
 }
 
 #portfolio .portfolio-item .portfolio-card .insight-summary {
     margin-top: 12px;
-    font-size: 0.9em;
+    font-size: 18px;
     color: #555;
     line-height: 1.4;
+    font-family: "Fredoka","Trebuchet MS",sans-serif;
+}
+
+#team .team-member h3,
+#team .team-member p {
+    font-family: "Fredoka","Trebuchet MS",sans-serif;
+}
+
+#team .team-member p {
+    font-size: 16px;
 }
 
 #portfolio .portfolio-item .portfolio-card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 14px 30px rgba(0,0,0,.12);
+    box-shadow: 0 16px 36px rgba(0,0,0,.22);
 }
 
 #portfolio * {
@@ -868,12 +1082,11 @@ body {
 }
 
 .setup-panels summary::before {
-    content: "▾";
+    content: "?";
     font-size: 0.9em;
     transition: transform .2s ease, color .2s ease;
 }
 
 .setup-panels details[open] summary::before {
-    content: "▴";
+    content: "?";
 }
-

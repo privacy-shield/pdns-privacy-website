@@ -20,7 +20,8 @@
             gap: .4rem;
         }
 
-        .contact-links a {
+        .contact-links a,
+        .contact-links .contact-item {
             color: #111;
             text-decoration: none;
             display: inline-flex;
@@ -43,7 +44,7 @@
 
 <body>
     <!-- About Section -->
-    <section id="about" class="bg-light-gray">
+    <section id="about">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
@@ -53,13 +54,13 @@
                         to help shape the future of the PDNS Privacy Shield. Let’s innovate, learn, and grow together. 
                     </p>
                     <div class="contact-links text-center">
-                        <a href="mailto:hello@pdns-shield.org">
-                            <i class="fa fa-envelope"></i>
-                            <span>hello@pdns-shield.org</span>
-                        </a>
-                        <a href="https://github.com/your-org/pdns-privacy-shield" target="_blank" rel="noopener">
-                            <i class="fa fa-github"></i>
-                            <span>github.com/your-org/pdns-privacy-shield</span>
+                        <div class="contact-item">
+                            <i class="fa-solid fa-envelope"></i>
+                            <span>pdns-shield[at]titanhex.com</span>
+                        </div>
+                        <a href="https://github.com/privacy-shield/pdns" target="_blank" rel="noopener">
+                            <i class="fa-brands fa-github"></i>
+                            <span>https://github.com/privacy-shield/pdns</span>
                         </a>
                     </div>
                 </div>

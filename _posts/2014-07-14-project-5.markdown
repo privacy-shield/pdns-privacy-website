@@ -2,7 +2,7 @@
 title: Development Setup
 subtitle: Test It Out
 layout: default
-modal-id: 5
+modal-id: DevSetup
 order: 5
 ---
 <style>

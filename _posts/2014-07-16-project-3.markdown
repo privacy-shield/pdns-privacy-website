@@ -2,7 +2,7 @@
 title: Installation Manual
 subtitle: Secure Your Privacy
 layout: default
-modal-id: 3
+modal-id: InstallManual
 order: 6
 ---
 

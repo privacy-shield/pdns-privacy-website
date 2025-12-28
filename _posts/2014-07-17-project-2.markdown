@@ -2,7 +2,7 @@
 title: Project Overview
 subtitle: Project Architecture
 layout: default
-modal-id: 2
+modal-id: ProjArch
 order: 2
 ---
 <!--div class="container-fluid"-->

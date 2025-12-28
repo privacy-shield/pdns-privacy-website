@@ -3,7 +3,7 @@ title: Sensors
 subtitle: Project Testing
 layout: sidebar
 permalink: /sensors/
-modal-id: 6
+modal-id: Sensors
 order: 4
 --- 
 <style>

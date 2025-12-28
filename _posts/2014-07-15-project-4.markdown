@@ -2,7 +2,7 @@
 title: Future Work
 subtitle: New Ideas
 layout: default
-modal-id: 4
+modal-id: FutureWork
 order: 3
 ---
 

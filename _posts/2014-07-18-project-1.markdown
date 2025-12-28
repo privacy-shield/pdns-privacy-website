@@ -2,7 +2,7 @@
 title: pDNS
 subtitle: Protecting DNS Privacy
 layout: default
-modal-id: 1
+modal-id: ProtectDNS
 order: 1
 ---
 <!--div class="container-fluid"-->

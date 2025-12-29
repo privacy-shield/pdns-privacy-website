@@ -1,95 +1,95 @@
 <style>
-.team-container {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 0.5rem 1rem 0rem;
-  text-align: center;
-}
-
-.team-container h2.section-heading {
-  font-size: 42px;
-  text-transform: uppercase;
-  margin-bottom: 35px;
-  font-weight: 800;
-  letter-spacing: 1px;
-}
-
-.team-members {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, max-content));
-  column-gap: 1rem;
-  row-gap: 0.5rem;
-  justify-content: center;
-  justify-items: center;
-}
-
-@media (max-width: 1200px) {
-  .team-members {
-    grid-template-columns: repeat(2, 1fr);
+  .team-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0.5rem 1rem 0rem;
+    text-align: center;
   }
-}
 
-@media (max-width: 600px) {
-  .team-members {
-    grid-template-columns: 1fr;
+  .team-container h2.section-heading {
+    font-size: 42px;
+    text-transform: uppercase;
+    margin-bottom: 35px;
+    font-weight: 800;
+    letter-spacing: 1px;
   }
-}
 
-.team-member {
-  width: 220px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  transition: transform 0.3s ease;
-}
+  .team-members {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, max-content));
+    column-gap: 1rem;
+    row-gap: 0.5rem;
+    justify-content: center;
+    justify-items: center;
+  }
 
-.team-member:hover {
-  transform: translateY(-8px);
-}
+  @media (max-width: 1200px) {
+    .team-members {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
 
-.team-member img {
-  width: 170px;
-  height: 170px;
-  object-fit: cover;
-  border-radius: 50%;
-  border: 8px solid #222;
-  box-shadow:
+  @media (max-width: 600px) {
+    .team-members {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .team-member {
+    width: 220px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: transform 0.3s ease;
+  }
+
+  .team-member:hover {
+    transform: translateY(-8px);
+  }
+
+  .team-member img {
+    width: 170px;
+    height: 170px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 8px solid #222;
+    box-shadow:
       0px 12px 30px rgba(0, 0, 0, 0.28),
       0px 4px 12px rgba(0, 0, 0, 0.18);
-  transition: transform 0.35s ease;
-}
+    transition: transform 0.35s ease;
+  }
 
-.team-member img:hover {
-  transform: scale(1.12);
-}
+  .team-member img:hover {
+    transform: scale(1.12);
+  }
 
-.team-member img.team-zoom {
-  transform: scale(1.05);
-}
+  .team-member img.team-zoom {
+    transform: scale(1.05);
+  }
 
-.team-member img.team-zoom:hover {
-  transform: scale(1.1);
-}
+  .team-member img.team-zoom:hover {
+    transform: scale(1.1);
+  }
 
 
 
-.team-member h3 {
-  font-size: 20px;
-  margin-top: 15px;
-  font-weight: 700;
-}
+  .team-member h3 {
+    font-size: 20px;
+    margin-top: 15px;
+    font-weight: 700;
+  }
 
-#team .team-member p {
-  color: #666;
-  margin-top: 5px;
-  font-size: 18px;
-}
-/* Contributors: black-filled circle frames only */
-.team-members.contributors .team-member img {
-  background-color: #000;
-}
+  #team .team-member p {
+    color: #666;
+    margin-top: 5px;
+    font-size: 18px;
+  }
 
+  /* Contributors: black-filled circle frames only */
+  .team-members.contributors .team-member img {
+    background-color: #000;
+  }
 </style>
 
 <section id="team" class="bg-light-gray">
@@ -101,83 +101,75 @@
     </div>
     <div class="team-members">
       <div class="team-member">
-        <a href="https://www.linkedin.com/in/alice-tan/" target="_blank" rel="noopener" class="avatar-link">
-    <img src="/assets/images/alice.jpg">
-  </a>
-        <h3>Alice Tan</h3>
+        <a href="https://www.linkedin.com/in/vitalykamluk/" target="_blank" rel="noopener" class="avatar-link">
+          <img src="{{ '/img/profile_vitaly.jpg' | relative_url }}">
+        </a>
+        <h3>Vitaly Kamluk</h3>
         <p>Project Lead</p>
       </div>
 
       <div class="team-member">
-        <a href="https://www.linkedin.com/in/alice-tan/" target="_blank" rel="noopener" class="avatar-link">
-    <img src="/assets/images/alice.jpg">
-  </a>
-        <h3>John Doe</h3>
+        <a href="https://www.linkedin.com/in/quek-teng-kai-9b524935a" target="_blank" rel="noopener" class="avatar-link">
+          <img src="{{ '/img/profile_tengkai.jpg' | relative_url }}">
+        </a>
+        <h3>Teng Kai</h3>
         <p>Developer</p>
       </div>
 
       <div class="team-member">
-        <a href="https://www.linkedin.com/in/alice-tan/" target="_blank" rel="noopener" class="avatar-link">
-    <img src="/assets/images/alice.jpg">
-  </a>
-        <h3>Jane Smith</h3>
-        <p>Designer</p>
+        <a href="https://www.linkedin.com/in/ivan-che-dice" target="_blank" rel="noopener" class="avatar-link">
+          <img src="{{ '/img/profile_ivan.jpg' | relative_url }}">
+        </a>
+        <h3>Che Jing Peng Ivan</h3>
+        <p>Developer</p>
       </div>
 
       <div class="team-member">
-        <a href="https://www.linkedin.com/in/alice-tan/" target="_blank" rel="noopener" class="avatar-link">
-    <img src="/assets/images/alice.jpg">
-  </a>
-        <h3>Jane Smith</h3>
-        <p>Designer</p>
+        <a href="https://www.linkedin.com/in/keefe-ho-859a38186" target="_blank" rel="noopener" class="avatar-link">
+          <img src="{{ '/img/profile_keefe.jpg' | relative_url }}">
+        </a>
+        <h3>Keefe Ho Shao Kai</h3>
+        <p>Developer</p>
       </div>
 
       <div class="team-member">
-        <a href="https://www.linkedin.com/in/alice-tan/" target="_blank" rel="noopener" class="avatar-link">
-    <img src="/assets/images/alice.jpg">
-  </a>
-        <h3>Jane Smith</h3>
-        <p>Designer</p>
+        <a href="https://www.linkedin.com/in/arcralius" target="_blank" rel="noopener" class="avatar-link">
+          <img src="{{ '/img/profile_weiqiang.jpg' | relative_url }}">
+        </a>
+        <h3>Ong Wei Qiang</h3>
+        <p>Developer</p>
       </div>
 
       <div class="team-member">
-        <a href="https://www.linkedin.com/in/alice-tan/" target="_blank" rel="noopener" class="avatar-link">
-    <img src="/assets/images/alice.jpg">
-  </a>
-        <h3>Jane Smith</h3>
-        <p>Designer</p>
+        <a href="https://www.linkedin.com/in/denver-c-75193a188" target="_blank" rel="noopener" class="avatar-link">
+          <img src="{{ '/img/profile_denver.jpg' | relative_url }}">
+        </a>
+        <h3>Denver Chin</h3>
+        <p>Developer</p>
       </div>
 
       <div class="team-member">
-        <a href="https://www.linkedin.com/in/alice-tan/" target="_blank" rel="noopener" class="avatar-link">
-    <img src="/assets/images/alice.jpg">
-  </a>
-        <h3>Jane Smith</h3>
-        <p>Designer</p>
-      </div>
-
-      <div class="team-member">
-        <a href="https://www.linkedin.com/in/alice-tan/" target="_blank" rel="noopener" class="avatar-link">
-    <img src="/assets/images/alice.jpg">
-  </a>
-        <h3>Alice Tan</h3>
-        <p>Project Lead</p>
+        <a href="https://www.linkedin.com/in/venkatesh-thanushree-b91904271" target="_blank" rel="noopener" class="avatar-link">
+          <img src="{{ '/img/profile_thanu.jpg' | relative_url }}">
+        </a>
+        <h3>Thanushree Venkatesh</h3>
+        <p>Testing, Documentation & Website</p>
       </div>
     </div>
-
+    
     <h2 class="section-heading">Contributors & Partners</h2>
-<div class="team-members contributors">
+    <div class="team-members contributors">
       <div class="team-member">
         <a href="https://www.singaporetech.edu.sg/" target="_blank" rel="noopener" class="avatar-link">
-    <img src="{{ '/img/SIT.png' | relative_url }}">
-  </a>
+          <img src="{{ '/img/SIT.png' | relative_url }}">
+        </a>
         <p>Singapore Institute of Technology</p>
       </div>
 
       <div class="team-member">
         <a href="https://www.sutd.edu.sg/" target="_blank" rel="noopener" class="avatar-link">
-    <img src="{{ '/img/sutd.png' | relative_url }}">
-  </a>
+          <img src="{{ '/img/sutd.png' | relative_url }}">
+        </a>
         <p>Singapore University of Technology and Design </p>
       </div>
     </div>

@@ -1,9 +1,9 @@
 ---
 title: Installation Manual
-subtitle: Secure Your Privacy
+subtitle: Run Your Own Instance
 layout: default
 modal-id: InstallManual
-order: 6
+order: 4
 ---
 
 <style>
@@ -129,9 +129,9 @@ pre {
 <div class="col-md-12 text-left">
   <div id="content">
     <div id="manual">
-      <h3>Privacy Shield configuration</h3>
+      <h3>Initial Setup and Test</h3>
       <ol>
-        <li>Clone the GitHub repository <em>PDNS_PRIVACY</em> using Git. You should have the following three folders:
+        <li>Clone the <a href="{{ site.github_url }}">GitHub repository</a> using git tool. You should have the following three folders:
           <ul>
             <li>pdns_collector</li>
             <li>pdns_privacy_shield</li>
@@ -187,9 +187,9 @@ pip3 install -r requirements.txt</code></pre>
           </div>
         </li>
       </ol>
-      <h3>Persistent Service Configuration</h3>
+      <h3>Persistent System Service</h3>
       <p>Reliable, long-running processes are essential for system stability. To achieve this, we can configure the application as a persistent service using the appropriate system service manager for each OS.</p>
-<small>repeat the steps below for <code>privacyshield.py</code>and <code>collector.py</code> as well</small>
+<small>repeat the steps below for <code>privacyshield.py</code>and <code>collector.py</code> as well (if needed).</small>
 <div class="setup-panels">
 <details>
   <summary>Systemd (Linux)</summary>
@@ -311,7 +311,7 @@ WantedBy=multi-user.target
   &lt;Actions Context="Author"&gt;
     &lt;Exec&gt;
       &lt;Command&gt;<span class="arg-highlight">&lt;PYTHON_PATH&gt;</span>&lt;/Command&gt;
-      &lt;Arguments&gt;<span class="arg-highlight">&lt;SCRIPT_NAME&gt;</span> <span class="arg-highlight">&lt;SENSOR_ID&gt;</span> <span class="arg-highlight">&lt;TODAY_PASSWORD&gt;</span> <span class="arg-highlight">&lt;IP_ADDRESS:PORT&gt;</span>&lt;/Arguments&gt;
+      &lt;Arguments&gt;<span class="arg-highlight">&lt;SCRIPT_NAME&gt;</span> <span class="arg-highlight">&lt;SENSOR_ID&gt;</span> <span class="arg-highlight">&ltqueries;TODAY_PASSWORD&gt;</span> <span class="arg-highlight">&lt;IP_ADDRESS:PORT&gt;</span>&lt;/Arguments&gt;
       &lt;WorkingDirectory&gt;<span class="arg-highlight">&lt;WORKING_DIRECTORY&gt;</span>&lt;/WorkingDirectory&gt;
     &lt;/Exec&gt;
   &lt;/Actions&gt;

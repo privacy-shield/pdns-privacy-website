@@ -2,6 +2,9 @@ Passive DNS Privacy Shield Project
 ====================
 This is pdns-shield website source based on a Jekyll template.
 
+# Pre-requisites
+You must have Jekyll installed. For details see https://jekyllrb.com/.
+
 # How to use
 Build and keep background watch and rebuild process:
 $ bundle exec jekyll build --watch 

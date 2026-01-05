@@ -18,3 +18,4 @@ TitanHex Pte Ltd
 # Credits
 Agency bootstrap theme (https://startbootstrap.com/template-overviews/agency/)
 Jekyll (https://jekyllrb.com/)
+Edward Fjellskål for passivedns tool (https://github.com/gamelinux/passivedns)

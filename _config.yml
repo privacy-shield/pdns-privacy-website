@@ -3,6 +3,8 @@ baseurl: ""  # the subpath of your site, e.g. /blog
 
 # Site settings
 title: PDNS Privacy Shield
+owner: TitanHex Pte Ltd
+owner_url: https://titanhex.com
 email: vitaly-kamluk+pdns-shield@users.noreply.github.com
 description: "Passive DNS Privacy Shield Project - Open Source Passive DNS Data Anonymization Tool"
 github_url: https://github.com/privacy-shield/pdns

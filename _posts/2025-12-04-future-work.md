@@ -11,7 +11,7 @@ order: 5
       <h2 class="section-heading">Ideas &amp; Roadmap</h2>
       <p>
         Passive DNS Privacy Shield is an evolving project. Beyond its current capabilities, we see several
-        promising directions that can further strengthen privacy, usability, and deployment flexibility..
+        promising directions that can further strengthen privacy, usability, and deployment flexibility.
       </p>
       <div class="content">
         <h3>Privacy-First Data Transport</h3>

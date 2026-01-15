@@ -22,6 +22,7 @@ order: 2
       Collector
       </h4>
       <p class="lead"> The pDNS collector is responsible for storing and aggregating the DNS query data captured by sensors. It organizes and stores the data in a centralized database for further analysis. The collector helps maintain historical records of DNS responses, which can be used for forensics, incident response, and identifying long-term patterns or trends in network behavior.</p>
+      <img src="{{ '/img/network.png' | relative_url }}" alt="Architecture" style="max-width: 100%; height: auto; margin: 20px 0;">
       <h3 class="section-heading">Data protocols</h3>
       <p class="lead">
        The sensor sends DNS responses to the shield via encrypted UDP packets. The data is accumulated for some time before being submitted to the pDNS Collector. The Collector receives, decrypts and validates the data integrity. The data is subsequently stored and used for analysis. Throughout the process, a heartbeat mechanism is used at all levels to ensure liveness of the system components and allowing real-time response to potential network issues or a hardware malfunction.
